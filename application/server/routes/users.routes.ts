@@ -5,7 +5,7 @@ import { dbConnectionString } from "../config/database.config";
 
 const router: Router = Router();
 
-router.get("/", async (req: Request, res: Response) => {
+router.get("/", async (req: Request, res: Response): Promise<void> => {
   try {
     let connection = await mysql.createConnection(dbConnectionString!);
     let query = `
