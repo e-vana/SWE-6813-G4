@@ -4,6 +4,19 @@
 
 ### Group Members
 
+## Project Planning
+
+### Trello
+Public Link : https://trello.com/w/workspace57274945
+
+## Sprint 1
+
+## Sprint 2
+
+## Sprint 3
+
+## Spring 4
+
 ### Frontend
 
 #### Technology
@@ -63,16 +76,3 @@ DB_CONNECTION_STRING="mysql://xxxxxxxxxxxxxxxx.db.ondigitalocean.com:25060/defau
 ```
 npm run dev
 ```
-
-## Project Planning
-
-### Trello
-Public Link : https://trello.com/w/workspace57274945
-
-## Sprint 1
-
-## Sprint 2
-
-## Sprint 3
-
-## Spring 4
