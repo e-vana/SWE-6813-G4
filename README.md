@@ -67,6 +67,7 @@ npm run dev
 ## Project Planning
 
 ### Trello
+Public Link : https://trello.com/w/workspace57274945
 
 ## Sprint 1
 
