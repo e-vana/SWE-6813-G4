@@ -4,6 +4,7 @@ import { authRouter } from "./routes/auth.routes";
 import { userRouter } from "./routes/users.routes";
 
 import cors from "cors";
+import { gamesRouter } from "./routes/games.routes";
 dotenv.config();
 
 const app: Express = express();
@@ -15,6 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
+app.use("/api/games", gamesRouter);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
