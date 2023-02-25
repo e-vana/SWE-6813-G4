@@ -10,6 +10,8 @@ import Landing from "./Routes/Landing";
 import Register from "./Routes/Register";
 import Login from "./Routes/Login";
 import Match from "./Routes/Match";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useUserStore } from "./Stores/UserStore";
 
 const darkTheme = createTheme({
   palette: {
@@ -17,13 +19,38 @@ const darkTheme = createTheme({
   },
 });
 
+const authRouter = createBrowserRouter([
+  {
+    path: "/",
+    children: [
+      {
+        index: true,
+        element: <Landing />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
+      },
+    ],
+  },
+]);
+
+const mainRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <Match />,
+  },
+]);
+
 function App() {
+  const userId = useUserStore((state) => state.userId);
   return (
     <ThemeProvider theme={darkTheme}>
-      {/* <Landing  */}
-      {/* <Register /> */}
-      {/* <Login /> */}
-      <Match />
+      <RouterProvider router={userId === 0 ? authRouter : mainRouter} />
     </ThemeProvider>
   );
 }
