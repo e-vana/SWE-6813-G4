@@ -1,6 +1,21 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+import { register } from "../utils/auth";
 
 const Register = () => {
+  const [passConfirmed, setPassConfirmed] = useState(false);
+  const checkPass = (pass: string, confirm: string) => {
+    pass === confirm
+      ? setPassConfirmed(true)
+      : console.log("passwords dont match");
+  };
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+  });
+  const handleSubmit = (inputs: any) => {
+    passConfirmed ? register(inputs) : console.log("passwords dont match");
+  };
   return (
     <Box minHeight="100vh" p={2} sx={{ backgroundColor: "background.default" }}>
       <Box>
@@ -14,6 +29,9 @@ const Register = () => {
             variant="outlined"
             fullWidth
             required
+            onChange={(event) =>
+              setInputs({ ...inputs, email: event.target.value })
+            }
           />
           <TextField
             size="small"
@@ -22,6 +40,9 @@ const Register = () => {
             variant="outlined"
             fullWidth
             required
+            onChange={(event) =>
+              setInputs({ ...inputs, password: event.target.value })
+            }
           />
           <TextField
             size="small"
@@ -30,8 +51,13 @@ const Register = () => {
             variant="outlined"
             fullWidth
             required
+            onChange={(event) => {
+              checkPass(inputs.password, event.target.value);
+            }}
           />
-          <Button variant="contained">Sign Up</Button>
+          <Button variant="contained" onClick={() => handleSubmit(inputs)}>
+            Sign Up
+          </Button>
         </Stack>
       </Box>
     </Box>

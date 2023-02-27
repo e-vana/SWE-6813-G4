@@ -12,9 +12,19 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import jwtDecode, { JwtPayload } from "jwt-decode";
 import { useState } from "react";
+import { useUserStore } from "../Stores/UserStore";
+
+interface Token {
+  id: number;
+  iat: number;
+}
 
 const Match = () => {
+  const token = useUserStore((state) => state.token);
+  const { id } = jwtDecode<Token>(token);
+  console.log(id);
   const [vibe, setVibe] = useState("");
   const [content, setContent] = useState("");
   const handleVibeChange = (event: any) => {

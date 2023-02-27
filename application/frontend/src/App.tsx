@@ -47,10 +47,10 @@ const mainRouter = createBrowserRouter([
 ]);
 
 function App() {
-  const userId = useUserStore((state) => state.userId);
+  const loggedIn = useUserStore((state) => state.loggedIn);
   return (
     <ThemeProvider theme={darkTheme}>
-      <RouterProvider router={userId === 0 ? authRouter : mainRouter} />
+      <RouterProvider router={loggedIn ? mainRouter : authRouter} />
     </ThemeProvider>
   );
 }
