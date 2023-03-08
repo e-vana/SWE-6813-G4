@@ -42,7 +42,12 @@ const authRouter = createBrowserRouter([
 const mainRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Match />,
+    children: [
+      {
+        path: "/match",
+        element: <Match />,
+      },
+    ],
   },
 ]);
 
