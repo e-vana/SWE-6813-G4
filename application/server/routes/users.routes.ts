@@ -2,10 +2,11 @@ import dotenv from "dotenv";
 dotenv.config();
 import { Router, Request, Response } from "express";
 import mysql from "mysql2/promise";
-import { body, validationResult } from "express-validator";
+import { body, Result, validationResult } from "express-validator";
 import { dbConnectionString } from "../config/database.config";
 import { RowDataPacket, ResultSetHeader } from "mysql2";
 import bcrypt from "bcrypt";
+import { validateEmail } from "../utility/validateEmail";
 
 const router: Router = Router();
 
@@ -52,14 +53,22 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
   try {
     let connection = await mysql.createConnection(dbConnectionString!);
     let salt = bcrypt.genSaltSync(10);
+    validateEmail(req.body.email);
+    const [checkUserExists] = await connection.query<User[]>(
+      `SELECT id, email FROM users WHERE email = ?`,
+      req.body.email
+    );
+    if (checkUserExists.length >= 1) {
+      throw { message: "User is already registered." };
+    }
     req.body.password = await bcrypt.hashSync(req.body.password, salt);
-    const [results] = await connection.query<User[]>(
+    const [results] = await connection.query<ResultSetHeader>(
       `INSERT INTO users SET ?`,
       req.body
     );
     const [getUserResults] = await connection.query<User[]>(
       `SELECT id, email FROM users WHERE id = ?`,
-      results[0]
+      results.insertId
     );
     await connection.end();
     res.status(200).json({ success: true, user: getUserResults });
