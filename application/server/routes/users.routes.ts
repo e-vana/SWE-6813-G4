@@ -80,6 +80,10 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
 router.patch("/:id", async (req: Request, res: Response): Promise<void> => {
   try {
     let connection = await mysql.createConnection(dbConnectionString!);
+    if (req.body.password) {
+      let salt = bcrypt.genSaltSync(10);
+      req.body.password = await bcrypt.hashSync(req.body.password, salt);
+    }
     let { id, ...updateFields } = req.body;
     const [results, fields] = await connection.query(
       `UPDATE users SET ? WHERE id = ?`,
