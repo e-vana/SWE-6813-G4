@@ -66,12 +66,12 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
       `INSERT INTO users SET ?`,
       req.body
     );
-    const [getUserResults] = await connection.query<User[]>(
-      `SELECT id, email FROM users WHERE id = ?`,
-      results.insertId
-    );
+    // const [getUserResults] = await connection.query<User[]>(
+    //   `SELECT id, email FROM users WHERE id = ?`,
+    //   results[0]
+    // );
     await connection.end();
-    res.status(200).json({ success: true, user: getUserResults });
+    res.status(200).json({ success: true});
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, error });
