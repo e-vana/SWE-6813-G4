@@ -20,7 +20,6 @@ export const decodeToken = async function (
   next: NextFunction
 ): Promise<void> {
   try {
-    console.log("Middleware fired");
     if (!req.headers.authorization) {
       throw { message: "You do not have permission to access this resource." };
     }
