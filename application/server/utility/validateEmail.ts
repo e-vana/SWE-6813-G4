@@ -2,7 +2,7 @@ export function validateEmail(username: string): string {
   if (typeof username !== "string") {
     throw new Error("Invalid username, must be string.");
   }
-  if (username.match(/a-zA-Z0-9_@\./)) {
+  if (username.match(/[^\w@\.\s]/g)) {
     throw new Error("Username contains an invalid character.");
   }
   if (!username.includes("@") || !username.includes(".")) {
