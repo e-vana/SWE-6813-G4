@@ -35,7 +35,7 @@ test("Throws Error if too many .", () => {
 });
 test("Throws Error if invalid character", () => {
   expect(() => {
-    validateEmail("test!");
+    validateEmail("!test@test.com");
   }).toThrowError();
 });
 test("Validates if username contains an underscore", () => {

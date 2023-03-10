@@ -14,12 +14,13 @@ interface AuthPayload {
   id: number;
 }
 
-const decodeToken = async function (
+export const decodeToken = async function (
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> {
   try {
+    console.log("Middleware fired");
     if (!req.headers.authorization) {
       throw { message: "You do not have permission to access this resource." };
     }
