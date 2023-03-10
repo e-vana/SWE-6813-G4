@@ -1,9 +1,8 @@
 import express, { Express, Response, Request } from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import { authRouter } from "./routes/auth.routes";
 import { userRouter } from "./routes/users.routes";
-
-import cors from "cors";
 import { gamesRouter } from "./routes/games.routes";
 dotenv.config();
 
