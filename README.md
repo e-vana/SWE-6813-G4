@@ -77,10 +77,10 @@ npm run dev
 10.0 pts
 
 - We forecast that we can complete 4 story points in the first sprint. These stories are as follows:
-1
-2
-3
-4
+- 1
+- 2
+- 3
+- 4
 -Our rationale for completing these story points is that these are essential to the foundation of the application before moving on to more complex tasks such as...
 
 
