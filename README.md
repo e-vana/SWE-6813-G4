@@ -81,7 +81,7 @@ npm run dev
 - 2
 - 3
 - 4
--Our rationale for completing these story points is that these are essential to the foundation of the application before moving on to more complex tasks such as...
+- Our rationale for completing these story points is that these are essential to the foundation of the application before moving on to more complex tasks such as...
 
 
 2. You decomposed stories into tasks. The tasks are clearly listed in your sprint backlog.
