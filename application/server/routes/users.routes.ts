@@ -6,12 +6,11 @@ import { body, Result, validationResult } from "express-validator";
 import { dbConnectionString } from "../config/database.config";
 import { RowDataPacket, ResultSetHeader } from "mysql2";
 import bcrypt from "bcrypt";
-import { validateEmail } from "../utility/validateEmail";
-import { validatePassword } from "../utility/validatePassword";
 import decodeToken from "../middleware/token.middleware";
+import { sanitizeEmail } from "../utility/sanitizeEmail";
+import { sanitizePassword } from "../utility/sanitizePassword";
 
 const router: Router = Router();
-router.use(decodeToken);
 
 // export interface User extends ResultSetHeader {
 //   id?: number;
@@ -64,8 +63,8 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
   try {
     let connection = await mysql.createConnection(dbConnectionString!);
     let salt = bcrypt.genSaltSync(10);
-    validateEmail(req.body.email);
-    validatePassword(req.body.password);
+    req.body.email = sanitizeEmail(req.body.email);
+    req.body.password = sanitizePassword(req.body.password);
     const [checkUserExists] = await connection.query<User[]>(
       `SELECT id, email FROM users WHERE email = ?`,
       req.body.email

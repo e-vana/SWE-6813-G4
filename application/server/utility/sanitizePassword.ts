@@ -1,4 +1,4 @@
-export function validatePassword(password: string): boolean {
+export function sanitizePassword(password: string): string {
   if (typeof password !== "string") {
     throw new Error("Invalid password type, must be string.");
   }
@@ -12,5 +12,5 @@ export function validatePassword(password: string): boolean {
       "Password does not meet the length requirements. (Minimum 8 chars)."
     );
   }
-  return true;
+  return password;
 }
