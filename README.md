@@ -3,15 +3,27 @@
 ## Overview
 
 ### Group Members
+- John Crabtree
+- Jordan Davidson
+- Fredy Quaicoe
+- Evan Vana
+
+## Project Technology Overview
+### Front End
+- [React](https://reactjs.org/) - front end framework
+- [React Material](https://mui.com/) - UI and component library
+
+### Back End
+- [Node JS](https://nodejs.org/en/) - Javascript runtime
+- [Express](https://expressjs.com/) - a lightweight web framework on top of node
+- [Jest](https://jestjs.io/) - a unit and integration test runner
+- [Typescript](https://www.typescriptlang.org/) - a strongly typed language on top of regular Javascript
+
+### Database 
+- MySQL8 remotely managed using [Digital Ocean Databases](https://try.digitalocean.com/managed-databases/?utm_campaign=amer_brand_kw_en_cpc&utm_adgroup=digitalocean_dbaas_exact&_keyword=digital%20ocean%20database&_device=c&_adposition=&utm_content=conversion&utm_medium=cpc&utm_source=google&gclid=Cj0KCQjwtsCgBhDEARIsAE7RYh298LyLeQx1mzW7Wloy9gsiUOo-CRiEh7RpMhNBL193_WJR8NE79kwaAj82EALw_wcB)
 
 ## Project Setup
-
 ### Frontend
-
-#### Technology
-
-- [React](https://reactjs.org/)
-
 #### Installation
 
 1. Install [Node Js](https://nodejs.org/en/)
@@ -30,15 +42,6 @@ npm start
 ```
 
 ### Backend
-
-#### Technology
-
-- Node JS
-- [Express](https://expressjs.com/)
-- [MySql](https://www.npmjs.com/package/mysql2)
-- [Jest](https://jestjs.io/)
-- [Typescript](https://www.typescriptlang.org/)
-
 #### Installation
 
 1. Install [Node Js](https://nodejs.org/en/)
