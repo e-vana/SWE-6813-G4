@@ -103,6 +103,12 @@ The Sprint #1 burndown chart can be [viewed here](https://docs.google.com/spread
 
 #### 5. You have conducted multiple Daily Scrums. You have evidence of at least one daily scrum documented in your git’s repo, should cover the following three items: 1. What will you do in the next 24 hours to help the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members plan to do which activities. 2. Do you see any impediment that prevents you or the Development Team from meeting the Sprint Goal? 3. What are the impediments? What is your impediment removal plan?
 
+Here's a few screenshots of a few meetings, you can view the full meeting records on the google doc below.
+
+![image](https://user-images.githubusercontent.com/24251508/225423459-3be8808b-6083-4243-922e-633e400fb7e8.png)
+![image](https://user-images.githubusercontent.com/24251508/225423567-605e5c51-44b9-4dfc-b50e-075c3a6d5406.png)
+
+
 - public link: https://docs.google.com/document/d/13vrNviHJNU_RgElHAn5KOSyl32PUu4H0EczT8A0vTHc/edit?usp=sharing
 
 
