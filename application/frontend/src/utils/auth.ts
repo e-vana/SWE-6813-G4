@@ -31,3 +31,7 @@ export async function getUserId(token: any) {
         console.log(err)
     }
 }
+
+// export async function logout(){
+
+// }

@@ -12,6 +12,8 @@ import Login from "./Routes/Login";
 import Match from "./Routes/Match";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useUserStore } from "./Stores/UserStore";
+import { QueryClient, QueryClientProvider } from "react-query";
+import Party from "./Routes/Party";
 
 const darkTheme = createTheme({
   palette: {
@@ -19,6 +21,7 @@ const darkTheme = createTheme({
   },
 });
 
+const queryClient = new QueryClient();
 const authRouter = createBrowserRouter([
   {
     path: "/",
@@ -44,8 +47,12 @@ const mainRouter = createBrowserRouter([
     path: "/",
     children: [
       {
-        path: "/match",
+        index: true,
         element: <Match />,
+      },
+      {
+        path: "party",
+        element: <Party />,
       },
     ],
   },
@@ -55,7 +62,9 @@ function App() {
   const loggedIn = useUserStore((state) => state.loggedIn);
   return (
     <ThemeProvider theme={darkTheme}>
-      <RouterProvider router={loggedIn ? mainRouter : authRouter} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={loggedIn ? mainRouter : authRouter} />
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }

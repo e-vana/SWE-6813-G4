@@ -16,8 +16,8 @@ const Login = () => {
   const handleSubmit = (inputs: any) => {
     login(inputs)
       .then((res) => setToken(res?.data.token))
-      .then(() => setLoggedIn())
-      .then(() => navigate("/match"));
+      .then(() => setLoggedIn(true))
+      .then(() => navigate("/"));
   };
 
   return (
