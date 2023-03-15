@@ -75,10 +75,12 @@ npm run dev
 ### Criteria and Rubric
 #### 1. You have a forecast of how many story points your team can complete during this sprint. The forecast along with its rationale are documented in your git’s repo. (10.0 pts)
 
-We forecast that we can complete 4 main user stories related to the general systems required for the project
+We forecast that we can complete 3 main user stories related to the general systems required for the project
 1. A user can register an account to use the multiplayer matchmaking service.
 2. A user can login to their account to use have access to the multiplayer matchmaking.
 3. A user can select a game and play session settings to enter the matchmaking queue.
+
+We also predict that we can complete many of the generic tasks that are required to get the project initialized that don't necessarily fall under specific user stories.  You can [view them on Trello](https://trello.com/w/workspace57274945) under the miscellaneous card category.
 
 #### 2. You decomposed stories into tasks. The tasks are clearly listed in your sprint backlog. (10.0 pts)
 Our trello board has each story decomposed into tasks. Each card represents a task that is mapped to a particular story. The completion of all of a stories cards means that all tasks are completed and the story is completed. Completed stories and their respective tasks are backlogged on our board under the "done" category.  
