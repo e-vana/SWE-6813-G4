@@ -88,6 +88,11 @@ Our trello board has each story decomposed into tasks. Each card represents a ta
 The stories and their associated tasks can be [viewed on Trello](https://trello.com/w/workspace57274945).
 
 #### 3. Your sprint backlog, including both stories and tasks, is represented in a kanbanboard. The kanban board, or a URL of the kanban board (from your online management tool), is documented in your git’s repo. I should be able to view the board. [Update your sprint backlog task board. Make sure the URL or images are available in your GitHub repo] (15.0 pts)
+
+![image](https://user-images.githubusercontent.com/24251508/225419581-5e5c48db-ca2c-4430-94bb-964235e8d003.png)
+![image](https://user-images.githubusercontent.com/24251508/225419641-14ed46a8-02be-4e2d-86b2-b29e9e2b8ced.png)
+
+
 The stories and their associated tasks can be [viewed on Trello](https://trello.com/w/workspace57274945).
 
 #### 4. You have a sprint burndown chart. On the x-axis, you display time markers in units of 1 day. On the y-axis, you display story points remaining to get done. There is a linear curve descending from left to right; the leftmost point of the curve is number of story points in your sprint at sprint day 1; the rightmost point is 0 story points remaining on the last day of the sprint. The burndown chart, or the URL of the burndown chart (from your online management tool), is documented in your git’s repo. I should be able to view the burndown chart. [Update your burndown chart. Make sure the URL or images are available in your GitHub repo.] (15.0 pts)
@@ -101,6 +106,7 @@ The Sprint #1 burndown chart can be [viewed here](https://docs.google.com/spread
 
 #### 6. There is evidence that you paired or mobbed on your code. The evidence could be a photo or video of your team working together, or it could be some other kind of evidence. The evidence is included in your GitHub repo. (15.0 pts)
 
+![image](https://user-images.githubusercontent.com/24251508/225419893-f5bfe9c4-fbfb-4967-ad04-1119faa4921a.png)
 
 
 #### 7. There is evidence that you are building your product test-first. There is at least 1 BDD / A-TDD test in your test suite, and it passes. There are at least 10 unit tests in your test suite, and they all pass. (10.0 pts)
