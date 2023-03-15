@@ -97,6 +97,7 @@ The stories and their associated tasks can be [viewed on Trello](https://trello.
 
 #### 4. You have a sprint burndown chart. On the x-axis, you display time markers in units of 1 day. On the y-axis, you display story points remaining to get done. There is a linear curve descending from left to right; the leftmost point of the curve is number of story points in your sprint at sprint day 1; the rightmost point is 0 story points remaining on the last day of the sprint. The burndown chart, or the URL of the burndown chart (from your online management tool), is documented in your git’s repo. I should be able to view the burndown chart. [Update your burndown chart. Make sure the URL or images are available in your GitHub repo.] (15.0 pts)
 
+![image](https://user-images.githubusercontent.com/24251508/225422442-b556f1f5-9ce6-4248-86a2-0d55792621b9.png)
 The Sprint #1 burndown chart can be [viewed here](https://docs.google.com/spreadsheets/d/1q3j7cHHDMNimTq_LC8vwiPS-vyIxROYsbnZN1WLxpEc/edit?usp=sharing).
 
 #### 5. You have conducted multiple Daily Scrums. You have evidence of at least one daily scrum documented in your git’s repo, should cover the following three items: 1. What will you do in the next 24 hours to help the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members plan to do which activities. 2. Do you see any impediment that prevents you or the Development Team from meeting the Sprint Goal? 3. What are the impediments? What is your impediment removal plan?
