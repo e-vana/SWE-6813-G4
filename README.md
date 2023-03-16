@@ -128,6 +128,15 @@ A major goal of Sprint 2 is to setup basic integration tests and a test database
 #### 8. Your team conducts a Sprint Review. There should be an evidence to that. (5.0 pts)
 
 ![image](https://user-images.githubusercontent.com/24251508/225425335-62dc06e4-7782-4d8b-b74b-1c50d7c06c57.png)
+We met to review that the following tasks have been completed:
+- Sprint 1 build works and satisfies the 3 user stories we created.
+- Sprint 1 build passes the testing suite. 
+- Identified issues and tasks that need to be implemented in susbsequent sprints. Each task is documented on the trello board.
+- Properly documented scrum meetings including each team members activities, obstacles, and contributions. 
+- Properly documented tasks and their associated stories in the Trello board.
+- Properly documented sprint progress with a burndown chart. 
+- Pushed all reviewed code to github repository.
+- Finalized readme for sprint 1 submission.   
 
 #### 9. Your product increment is working software—the completed stories in this sprint must be reflected in the application/product (in form of features) and ready to show to your customer. A link to your working prototype should be documented in your git repo. (10.0 pts)
 
