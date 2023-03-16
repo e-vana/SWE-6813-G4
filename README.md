@@ -108,10 +108,8 @@ Here's a few screenshots of a few meetings, you can view the full meeting record
 ![image](https://user-images.githubusercontent.com/24251508/225423459-3be8808b-6083-4243-922e-633e400fb7e8.png)
 - During this meeting we discussed the intial scope and goals of this application. We established preliminary roles for each group member. Evan will be working primarily on backend, while Jordan will work on frontend. Fredy will work on both front and back end. John is team leader and will also work on backend. Overall everyone will work on everypart of the project and help with any part as needed. During the next meeting we will discuss how to intialize the database and server and discuss what stories we beleive we can achieve in the first sprint. During the next 24 hours each team member will research server and database hosting services. 
 
-
-![image](https://user-images.githubusercontent.com/24251508/225423567-605e5c51-44b9-4dfc-b50e-075c3a6d5406.png)
+![image](https://user-images.githubusercontent.com/103462168/225520184-40e9b827-8cea-4cf0-8a69-897835f5b0df.png)
 - Met to get updates on progress and assign new tasks for the week. Jordan is continuing to build out the UI. John is working on API calls and endpoints. Evan is building out the server side. Fredy is helping with client side login and authentication. 
-
 
 - The full record of meetings [Can be viewed here](https://docs.google.com/document/d/13vrNviHJNU_RgElHAn5KOSyl32PUu4H0EczT8A0vTHc/edit?usp=sharing)
 
