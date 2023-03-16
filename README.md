@@ -99,6 +99,8 @@ The stories and their associated tasks can be [viewed on Trello](https://trello.
 
 ![image](https://user-images.githubusercontent.com/24251508/225422442-b556f1f5-9ce6-4248-86a2-0d55792621b9.png)
 
+The tasks on the burndown chart directly correlate with a task inside of trello.  The planned tasks blue line is the estimated task completion rate (there's an assumption that there's a linear rate of completion) and the actual tasks red line is the actual rate of task completion throughout the sprints duration.
+
 The Sprint #1 burndown chart can be [viewed here](https://docs.google.com/spreadsheets/d/1q3j7cHHDMNimTq_LC8vwiPS-vyIxROYsbnZN1WLxpEc/edit?usp=sharing).
 
 #### 5. You have conducted multiple Daily Scrums. You have evidence of at least one daily scrum documented in your git’s repo, should cover the following three items: 1. What will you do in the next 24 hours to help the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members plan to do which activities. 2. Do you see any impediment that prevents you or the Development Team from meeting the Sprint Goal? 3. What are the impediments? What is your impediment removal plan?
@@ -118,6 +120,7 @@ Here's a few screenshots of a few meetings, you can view the full meeting record
 
 ![image](https://user-images.githubusercontent.com/24251508/225419893-f5bfe9c4-fbfb-4967-ad04-1119faa4921a.png)
 
+Evan and Jordan working out an HTTP call bug.
 
 #### 7. There is evidence that you are building your product test-first. There is at least 1 BDD / A-TDD test in your test suite, and it passes. There are at least 10 unit tests in your test suite, and they all pass. (10.0 pts)
 
@@ -142,7 +145,7 @@ We met to review that the following tasks have been completed:
 
 #### 9. Your product increment is working software—the completed stories in this sprint must be reflected in the application/product (in form of features) and ready to show to your customer. A link to your working prototype should be documented in your git repo. (10.0 pts)
 
-
+You can view the demo video submitted for the presentation portion of the project with the application running.  We're still working out a few kinks with the complicated build process (a separate front and back end that both need to be built), a goal we're trying to accomplish for Sprint 2.
 
 
 ### Trello
