@@ -7,6 +7,7 @@ export async function register(payload: object) {
     try {
        const res = await api.post("/api/users", payload);
        console.log(res);
+       return res;
     } catch (err) {
         console.log(err)
     }

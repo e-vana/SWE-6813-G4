@@ -6,8 +6,9 @@ import { body, Result, validationResult } from "express-validator";
 import { dbConnectionString } from "../config/database.config";
 import { RowDataPacket, ResultSetHeader } from "mysql2";
 import bcrypt from "bcrypt";
-import { validateEmail } from "../utility/validateEmail";
 import decodeToken from "../middleware/token.middleware";
+import { sanitizeEmail } from "../utility/sanitizeEmail";
+import { sanitizePassword } from "../utility/sanitizePassword";
 
 const router: Router = Router();
 
@@ -21,40 +22,49 @@ export interface User extends RowDataPacket {
   email: string;
   password: string;
 }
-router.get("/", async (req: Request, res: Response): Promise<void> => {
-  try {
-    let connection = await mysql.createConnection(dbConnectionString!);
-    let query = `
-      SELECT id, email FROM users
+router.get(
+  "/",
+  decodeToken,
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      let connection = await mysql.createConnection(dbConnectionString!);
+      let query = `
+      SELECT id, email, status FROM users
 		`;
-    const [results, fields] = await connection.execute<User[]>(query);
+      const [results, fields] = await connection.execute<User[]>(query);
 
-    await connection.end();
-    res.status(200).json({ success: true, users: results });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ success: false, error });
+      await connection.end();
+      res.status(200).json({ success: true, users: results });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, error });
+    }
   }
-});
-router.get("/:id", async (req: Request, res: Response): Promise<void> => {
-  try {
-    let connection = await mysql.createConnection(dbConnectionString!);
-    let query = `
-      SELECT id, email FROM users WHERE id = ?
+);
+router.get(
+  "/:id",
+  decodeToken,
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      let connection = await mysql.createConnection(dbConnectionString!);
+      let query = `
+      SELECT id, email, status FROM users WHERE id = ?
     `;
-    const [results] = await connection.query<User[]>(query, req.params["id"]);
-    await connection.end();
-    res.status(200).json({ success: true, user: results });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ success: false, error });
+      const [results] = await connection.query<User[]>(query, req.params["id"]);
+      await connection.end();
+      res.status(200).json({ success: true, user: results });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, error });
+    }
   }
-});
+);
 router.post("/", async (req: Request, res: Response): Promise<void> => {
   try {
     let connection = await mysql.createConnection(dbConnectionString!);
     let salt = bcrypt.genSaltSync(10);
-    validateEmail(req.body.email);
+    req.body.email = sanitizeEmail(req.body.email);
+    req.body.password = sanitizePassword(req.body.password);
     const [checkUserExists] = await connection.query<User[]>(
       `SELECT id, email FROM users WHERE email = ?`,
       req.body.email
@@ -83,7 +93,6 @@ router.patch(
   decodeToken,
   async (req: Request, res: Response): Promise<void> => {
     try {
-      console.log(req.body);
       let connection = await mysql.createConnection(dbConnectionString!);
       if (req.body.status >= 3) {
         throw { message: "Invalid status code, 0-3 are valid." };
@@ -101,37 +110,46 @@ router.patch(
     }
   }
 );
-router.patch("/:id", async (req: Request, res: Response): Promise<void> => {
-  try {
-    let connection = await mysql.createConnection(dbConnectionString!);
-    if (req.body.password) {
-      let salt = bcrypt.genSaltSync(10);
-      req.body.password = await bcrypt.hashSync(req.body.password, salt);
+router.patch(
+  "/:id",
+  decodeToken,
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      let connection = await mysql.createConnection(dbConnectionString!);
+      if (req.body.password) {
+        let salt = bcrypt.genSaltSync(10);
+        req.body.password = await bcrypt.hashSync(req.body.password, salt);
+      }
+      let { id, ...updateFields } = req.body;
+      const [results, fields] = await connection.query(
+        `UPDATE users SET ? WHERE id = ?`,
+        [updateFields, req.params["id"]]
+      );
+      await connection.end();
+      res.status(200).json({ success: true, user: results });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, error });
     }
-    let { id, ...updateFields } = req.body;
-    const [results, fields] = await connection.query(
-      `UPDATE users SET ? WHERE id = ?`,
-      [updateFields, req.params["id"]]
-    );
-    await connection.end();
-    res.status(200).json({ success: true, user: results });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ success: false, error });
   }
-});
-router.delete("/:id", async (req: Request, res: Response): Promise<void> => {
-  try {
-    let connection = await mysql.createConnection(dbConnectionString!);
-    const [results, fields] = await connection.query(
-      `DELETE FROM users WHERE id = ?`,
-      [req.params["id"]]
-    );
-    await connection.end();
-    res.status(200).json({ success: true, user: results });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ success: false, error });
+);
+router.delete(
+  "/:id",
+  decodeToken,
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      let connection = await mysql.createConnection(dbConnectionString!);
+      const [results, fields] = await connection.query(
+        `DELETE FROM users WHERE id = ?`,
+        [req.params["id"]]
+      );
+      await connection.end();
+      res.status(200).json({ success: true, user: results });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, error });
+    }
   }
-});
+);
+
 export { router as userRouter };

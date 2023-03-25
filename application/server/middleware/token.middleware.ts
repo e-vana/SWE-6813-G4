@@ -14,7 +14,7 @@ interface AuthPayload {
   id: number;
 }
 
-const decodeToken = async function (
+export const decodeToken = async function (
   req: Request,
   res: Response,
   next: NextFunction

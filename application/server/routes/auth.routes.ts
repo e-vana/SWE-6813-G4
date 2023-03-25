@@ -7,6 +7,7 @@ import mysql from "mysql2/promise";
 import { dbConnectionString } from "../config/database.config";
 import bcrypt from "bcrypt";
 import { User } from "./users.routes";
+import { sanitizeEmail } from "../utility/sanitizeEmail";
 
 const router: Router = Router();
 
@@ -16,6 +17,7 @@ router.post("/login", async (req: Request, res: Response) => {
     let query = `
       SELECT * FROM users WHERE email = ?
     `;
+    req.body.email = sanitizeEmail(req.body.email);
     const [results] = await connection.query<User[]>(query, req.body.email);
     console.log(results[0].password);
     let t = await bcrypt.compareSync(req.body.password, results[0].password);

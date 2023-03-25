@@ -4,10 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useUserStore } from "../Stores/UserStore";
 import { getUserId, login } from "../utils/auth";
 import jwt_decode from "jwt-decode";
+import { changeStatus } from "../utils/user";
 
 const Login = () => {
   const setToken = useUserStore((state) => state.setToken);
   const setLoggedIn = useUserStore((state) => state.setLoggedIn);
+  const setStatus = useUserStore((state) => state.setStatus);
   const navigate = useNavigate();
   const [inputs, setInputs] = useState({
     email: "",
@@ -17,6 +19,8 @@ const Login = () => {
     login(inputs)
       .then((res) => setToken(res?.data.token))
       .then(() => setLoggedIn(true))
+      .then(() => setStatus(1))
+      .then(() => changeStatus(1))
       .then(() => navigate("/"));
   };
 

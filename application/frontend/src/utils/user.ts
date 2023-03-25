@@ -1,12 +1,12 @@
-import axios from "axios";
+import api from "../APIs/users"
 import { useUserStore } from "../Stores/UserStore";
 
-export async function changeStatus(payload: object) {
+export async function changeStatus(status: number) {
   try {
     const token = useUserStore.getState().token;
-    const res = await axios.patch(
-      "http://localhost:3005/api/users/status",
-      payload,
+    const res = await api.patch(
+      "/api/users/status",
+      {status: status},
       { headers: { authorization: `Bearer ${token}` } }
     );
     console.log(res);

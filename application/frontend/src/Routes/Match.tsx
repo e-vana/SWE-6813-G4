@@ -61,14 +61,13 @@ const Match = () => {
   const setCurrentContent = useUserStore((state) => state.setContent);
   const setStatus = useUserStore((state) => state.setStatus);
   const reset = useUserStore((state) => state.reset);
-  const payload = { status: 2 };
   const navigate = useNavigate();
   const handleSubmit = () => {
     setCurrentGame(game);
     setCurrentVibe(vibe);
     setCurrentContent(content);
     setStatus(2);
-    changeStatus(payload);
+    changeStatus(2);
     navigate("/party");
   };
   const logout = () => {

@@ -39,20 +39,20 @@ const Landing = () => {
             alignItems="center"
           >
             <Typography color="#ffffff" align="center" variant="h2">
-              Find you squad for any game you're playing
+              Find your squad for any game you're playing
             </Typography>
             <Stack spacing={2} my={5} justifyContent="center">
               <Typography color="#ffffff" align="center" variant="h5">
                 How it works:
               </Typography>
               <Typography color="#ffffff" align="center" variant="h6">
-                1. Sign in with your discord account
+                1. Sign in or create your account
               </Typography>
               <Typography color="#ffffff" align="center" variant="h6">
                 2. Answer a few simple questions
               </Typography>
               <Typography color="#ffffff" align="center" variant="h6">
-                3. Join the discord server
+                3. Match with other players
               </Typography>
               <Typography color="#ffffff" align="center" variant="h6">
                 4. Play
