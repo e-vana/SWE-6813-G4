@@ -7,6 +7,8 @@ import { dbConnectionString } from "../config/database.config";
 import { RowDataPacket, ResultSetHeader } from "mysql2";
 import bcrypt from "bcrypt";
 import decodeToken from "../middleware/token.middleware";
+import jwt from "jsonwebtoken";
+
 import { sanitizeEmail } from "../utility/sanitizeEmail";
 import { sanitizePassword } from "../utility/sanitizePassword";
 
@@ -32,7 +34,6 @@ router.get(
       SELECT id, email, status FROM users
 		`;
       const [results, fields] = await connection.execute<User[]>(query);
-
       await connection.end();
       res.status(200).json({ success: true, users: results });
     } catch (error) {
@@ -77,12 +78,9 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
       `INSERT INTO users SET ?`,
       req.body
     );
-    // const [getUserResults] = await connection.query<User[]>(
-    //   `SELECT id, email FROM users WHERE id = ?`,
-    //   results[0]
-    // );
+    const token = jwt.sign({ id: results.insertId }, process.env.JWT_SECRET!);
     await connection.end();
-    res.status(200).json({ success: true });
+    res.status(200).json({ success: true, token: token });
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, error });
