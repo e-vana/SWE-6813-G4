@@ -1,0 +1,33 @@
+name: Continuous Integration
+on: [push]
+jobs:
+  unit-tests:
+    name: Run Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm install typescript -g
+      - run: tsc
+      - run: npm run test:unit
+  deploy-front-end:
+    name: Deploy frontend to Netlify
+    needs: unit-tests
+    steps:
+      - uses: jsmrcaga/action-netlify-deploy@v2.0.0
+        with:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_DEPLOY_TO_PROD: true
+  deploy-back-end:
+    name: Deploy backend to Digital Ocean
+    needs: unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: digitalocean/app_action@main
+        with:
+          app_name: hammerhead-app
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
