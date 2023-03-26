@@ -19,7 +19,6 @@ router.post("/login", async (req: Request, res: Response) => {
     `;
     req.body.email = sanitizeEmail(req.body.email);
     const [results] = await connection.query<User[]>(query, req.body.email);
-    console.log(results[0].password);
     let t = await bcrypt.compareSync(req.body.password, results[0].password);
     const token = jwt.sign({ id: results[0].id }, process.env.JWT_SECRET!);
     await connection.end();
