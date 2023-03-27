@@ -18,15 +18,14 @@ jobs:
       - run: npm run test:unit
         working-directory: ./application/server
   deploy-front-end:
-    name: Deploy frontend to Netlify
+    name: Deploy frontend to Digital Ocean
     needs: unit-tests
     runs-on: ubuntu-latest
     steps:
-      - uses: jsmrcaga/action-netlify-deploy@v2.0.0
+      - uses: digitalocean/app_action@main
         with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_TO_PROD: true
+          app_name: hammerhead-app
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
   deploy-back-end:
     name: Deploy backend to Digital Ocean
     needs: unit-tests
@@ -34,5 +33,5 @@ jobs:
     steps:
       - uses: digitalocean/app_action@main
         with:
-          app_name: hammerhead-app
+          app_name: sea-lion-app
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
