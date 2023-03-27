@@ -12,8 +12,11 @@ jobs:
       - run: npm install
         working-directory: ./application/server
       - run: npm install typescript -g
+        working-directory: ./application/server
       - run: tsc
+        working-directory: ./application/server
       - run: npm run test:unit
+        working-directory: ./application/server
   deploy-front-end:
     name: Deploy frontend to Netlify
     needs: unit-tests
