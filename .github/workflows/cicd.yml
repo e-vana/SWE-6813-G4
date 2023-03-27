@@ -9,8 +9,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: cd ./application/server
       - run: npm install
+        working-directory: ./application/server
       - run: npm install typescript -g
       - run: tsc
       - run: npm run test:unit
