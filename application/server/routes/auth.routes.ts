@@ -10,7 +10,7 @@ import { User } from "./users.routes";
 import { sanitizeEmail } from "../utility/sanitizeEmail";
 
 const router: Router = Router();
-
+//some
 router.post("/login", async (req: Request, res: Response) => {
   try {
     let connection = await mysql.createConnection(dbConnectionString!);
