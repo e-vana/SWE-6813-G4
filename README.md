@@ -151,10 +151,18 @@ You can view the demo video submitted for the presentation portion of the projec
 ## Sprint 2
 #### 1. You have a forecast of how many story points your team can complete during this sprint. Your forecast is based on the Yesterday's Weather forecasting pattern. The forecast along with its rationale are documented in your git’s repo. 10.0 pts
 
+We forecast that we can complete 2 user stories required for this project which are matchmaking and deployment. 
+1. A user is able to be matched with compatible players.
+2. A user can access the service through a our provided URL.
+
 #### 2. You decomposed stories into tasks. The tasks are clearly listed in your sprint backlog. 10.0 pts
+
+Our trello board has each story decomposed into tasks. Each card represents a task that is mapped to each story. The completion of all of a stories cards means that all tasks are completed and the story is completed. Completed stories and their respective tasks are backlogged on our board under the "done" category.
 
 #### 3. Your sprint backlog, including both stories and tasks, is represented in a kanban board. The kanban board, or a URL of the kanban board (from your online management tool), is documented in your git’s repo. I should be able to view the board.
 [Update your sprint backlog task board. Make sure the URL or images are available in your GitHub repo]. 10.0 pts
+
+The stories and their associated tasks for sprint 2 can be [viewed on Trello](https://trello.com/b/k2f9U58h/sprint-2).
 
 #### 4. You have a sprint burndown chart. On the x-axis, you display time markers in units of 1 day. On the y-axis, you display story points remaining to get done. There is a linear curve descending from left to right; the leftmost point of the curve is number of story points in your sprint at sprint day 1; the rightmost point is 0 story points remaining on the last day of the sprint. The burndown chart, or the URL of the burndown chart (from your online management tool), is documented in your git’s repo. I should be able to view the burndown chart.
 [Update your burndown chart. Make sure the URL or images are available in your GitHub repo.] 10.0 pts
