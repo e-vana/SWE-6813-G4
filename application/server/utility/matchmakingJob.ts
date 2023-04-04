@@ -11,7 +11,7 @@ interface MatchmakingLobbyEntry extends ResultSetHeader{
 
 
 export const getAllUsersInMatchmakingQueue = async function(){
-  let query = `SELECT * FROM matchmaking_queue`;
+  let query = `SELECT * FROM matchmaking_queue WHERE active = 1`;
   let connection = await mysql.createConnection(dbConnectionString!);
   const [results] = await connection.query<MatchMakingEntry[]>(query);
   await connection.end();
@@ -19,12 +19,13 @@ export const getAllUsersInMatchmakingQueue = async function(){
 }
 
 export const createLobbyAndInserPlayersIntoLobby = async function(lobbies: MatchMakingLobby[]){
-  let connection = await mysql.createConnection(dbConnectionString!);
+  let connection = await mysql.createConnection({uri: dbConnectionString!, dateStrings: true});
   try {
     for (const lobby of lobbies) {
       await connection.beginTransaction();
-      let createLobbyQuery = `INSERT INTO matchmaking_lobby (game_id, created_at) VALUES (?, ${Date.now})`
-      const [results] = await connection.query<MatchmakingLobbyEntry>(createLobbyQuery, lobby.game_id);
+      let d = new Date().toISOString().slice(0, 19).replace('T', ' ');
+      let createLobbyQuery = `INSERT INTO matchmaking_lobby (game_id, created_at) VALUES (?, ?)`
+      const [results] = await connection.query<MatchmakingLobbyEntry>(createLobbyQuery, [lobby.game_id, d]);
       let insertId = results.insertId;
       for (const user of lobby.lobby) {
         let addUserToLobbyQuery = `INSERT INTO matchmaking_lobby_matchmaking_queue (lobby_id, matchmaking_queue_id) VALUES (?, ?)`;
@@ -33,6 +34,7 @@ export const createLobbyAndInserPlayersIntoLobby = async function(lobbies: Match
       await connection.commit();
     }
   } catch (error) {
+    console.log(error)
     await connection.rollback();
     throw { message: "There was a problem with these transactions." };
   }
@@ -42,7 +44,6 @@ export const createLobbyAndInserPlayersIntoLobby = async function(lobbies: Match
 export const matchmakingJob = async function(){
   try {
     let u = await getAllUsersInMatchmakingQueue();
-    console.log(u);
     if(u.length < 5){
       //emit players in queue
       return;
@@ -51,7 +52,7 @@ export const matchmakingJob = async function(){
     if(!lobbies){
       return;
     }
-
+    await createLobbyAndInserPlayersIntoLobby(lobbies);
 
     //query matchmaking table for participants inside of the matchmaking pool
     //pass query results into matchmaking function
@@ -60,3 +61,5 @@ export const matchmakingJob = async function(){
     console.log(error);
   }
 }
+
+matchmakingJob();
