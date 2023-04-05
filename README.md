@@ -151,7 +151,7 @@ You can view the demo video submitted for the presentation portion of the projec
 ## Sprint 2
 #### 1. You have a forecast of how many story points your team can complete during this sprint. Your forecast is based on the Yesterday's Weather forecasting pattern. The forecast along with its rationale are documented in your git’s repo. 10.0 pts
 
-We forecast that we can complete 2 user stories required for this project which are matchmaking and deployment. 
+We forecast that we can complete 2 user stories required for this project which are matchmaking and deployment. This is based off of how much work we were able to accompblish during sprint 1. We have less time during this sprint so we have decided to prioritize the key functions of this service.  
 1. A user is able to be matched with compatible players.
 2. A user can access the service through a our provided URL.
 
@@ -180,12 +180,15 @@ The Sprint #2 burndown chart can be [viewed here]([https://docs.google.com/sprea
 During this meeting we discussed features for sprint 2. Our primary goal is to figure out the matchmaking algorithm and deployment on Digital Ocean. Evan is working on deployment, John is working on the matchmaking algorithm, Jordan is working on the search bar for friends list on the UI, and Fredy is working on creating the BDD tests for the frontend using Jest.
 The full record of meetings [Can be viewed here](https://docs.google.com/document/d/13vrNviHJNU_RgElHAn5KOSyl32PUu4H0EczT8A0vTHc/edit?usp=sharing)
 
+<img width="1440" alt="Screenshot 2023-04-04 at 11 22 07 AM" src="https://user-images.githubusercontent.com/103462168/230126233-32bb3b6e-4576-4e0d-a427-5f611fe54d66.png">
+During this meeting we met to go over sprint 2 and discuss the remaining to-do’s. In the last 24 hours every group member has submitted the last of their code for review. The remaining parts of the readme are going to be filled out asynchronously. 
+
 
 
 #### 6. There is evidence that you paired or mobbed on your code. The evidence could be a photo or video of your team working together, or it could be some other kind of evidence. The evidence is included in your GitHub repo. 10.0 pts
 
 <img width="1440" alt="Screenshot 2023-04-04 at 11 09 28 AM" src="https://user-images.githubusercontent.com/103462168/229969979-76237c78-0c82-458d-8d4d-f47227702604.png">
-During this meeting we worked on finalizing the matchmaking algorithm and how it well be utitlized in conjunction with web sockets for sprint 2. 
+During this meeting we worked on finalizing the matchmaking algorithm and how it well be utitlized in conjunction with web sockets for sprint 2.  
 
 #### 7. There is evidence that you are building your product test-first. There are at least 2 BDD / A-TDD test in your test suite (at least 1 new one this sprint), and it passes. There are at least 20 unit tests in your test suite (at least 10 new unit tests this sprint), and they all pass. 15.0 pts
 
