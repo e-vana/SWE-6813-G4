@@ -169,7 +169,7 @@ The stories and their associated tasks for sprint 2 can be [viewed on Trello](ht
 
 The tasks on the burndown chart directly correlate with a task inside of trello.  The planned tasks blue line is the estimated task completion rate (there's an assumption that there's a linear rate of completion) and the actual tasks red line is the actual rate of task completion throughout the sprints duration.
 
-The Sprint #2 burndown chart can be [viewed here]([https://docs.google.com/spreadsheets/d/1q3j7cHHDMNimTq_LC8vwiPS-vyIxROYsbnZN1WLxpEc/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1q3j7cHHDMNimTq_LC8vwiPS-vyIxROYsbnZN1WLxpEc/edit#gid=2080079855)).
+The Sprint #2 burndown chart can be [viewed here](https://docs.google.com/spreadsheets/d/1q3j7cHHDMNimTq_LC8vwiPS-vyIxROYsbnZN1WLxpEc/edit#gid=2080079855).
 
 #### 5. You have conducted multiple Daily Scrums. You have evidence of at least one daily scrum documented in your git’s repo, should cover the following three items:
 -What did you do in the last 24 hours that helped the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members did which activities.
