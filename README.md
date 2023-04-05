@@ -167,16 +167,41 @@ The stories and their associated tasks for sprint 2 can be [viewed on Trello](ht
 #### 4. You have a sprint burndown chart. On the x-axis, you display time markers in units of 1 day. On the y-axis, you display story points remaining to get done. There is a linear curve descending from left to right; the leftmost point of the curve is number of story points in your sprint at sprint day 1; the rightmost point is 0 story points remaining on the last day of the sprint. The burndown chart, or the URL of the burndown chart (from your online management tool), is documented in your git’s repo. I should be able to view the burndown chart.
 [Update your burndown chart. Make sure the URL or images are available in your GitHub repo.] 10.0 pts
 
+The tasks on the burndown chart directly correlate with a task inside of trello.  The planned tasks blue line is the estimated task completion rate (there's an assumption that there's a linear rate of completion) and the actual tasks red line is the actual rate of task completion throughout the sprints duration.
+
+The Sprint #2 burndown chart can be [viewed here]([https://docs.google.com/spreadsheets/d/1q3j7cHHDMNimTq_LC8vwiPS-vyIxROYsbnZN1WLxpEc/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1q3j7cHHDMNimTq_LC8vwiPS-vyIxROYsbnZN1WLxpEc/edit#gid=2080079855)).
+
 #### 5. You have conducted multiple Daily Scrums. You have evidence of at least one daily scrum documented in your git’s repo, should cover the following three items:
 -What did you do in the last 24 hours that helped the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members did which activities.
 -What will you do in the next 24 hours to help the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members plan to do which activities.
 - Do you see any impediment that prevents you or the Development Team from meeting the Sprint Goal? What are the impediments? What is your impediment removal plan? 10.0 pts
 
+<img width="1440" alt="Screenshot 2023-03-22 at 12 28 07 PM" src="https://user-images.githubusercontent.com/103462168/229969076-e0210870-22ee-42fa-95ad-88dc60a18f5b.png">
+During this meeting we discussed features for sprint 2. Our primary goal is to figure out the matchmaking algorithm and deployment on Digital Ocean. Evan is working on deployment, John is working on the matchmaking algorithm, Jordan is working on the search bar for friends list on the UI, and Fredy is working on creating the BDD tests for the frontend using Jest.
+The full record of meetings [Can be viewed here](https://docs.google.com/document/d/13vrNviHJNU_RgElHAn5KOSyl32PUu4H0EczT8A0vTHc/edit?usp=sharing)
+
+
+
 #### 6. There is evidence that you paired or mobbed on your code. The evidence could be a photo or video of your team working together, or it could be some other kind of evidence. The evidence is included in your GitHub repo. 10.0 pts
+
+<img width="1440" alt="Screenshot 2023-04-04 at 11 09 28 AM" src="https://user-images.githubusercontent.com/103462168/229969979-76237c78-0c82-458d-8d4d-f47227702604.png">
+During this meeting we worked on finalizing the matchmaking algorithm and how it well be utitlized in conjunction with web sockets for sprint 2. 
 
 #### 7. There is evidence that you are building your product test-first. There are at least 2 BDD / A-TDD test in your test suite (at least 1 new one this sprint), and it passes. There are at least 20 unit tests in your test suite (at least 10 new unit tests this sprint), and they all pass. 15.0 pts
 
 #### 8. Your team conducts a Sprint Review. There should be an evidence to that. 5.0 pts
+
+<img width="1440" alt="Screenshot 2023-04-04 at 11 23 01 AM" src="https://user-images.githubusercontent.com/103462168/229970347-31a49c51-a9b3-45cc-b8fd-ac14a420b1fc.png">
+
+We met to review that the following tasks have been completed:
+- Sprint 2 build works and satisfies the 3 user stories we created.
+- Sprint 2 build passes the testing suite. 
+- Identified issues and tasks that need to be implemented in sprint 3. Each task is documented on the trello board.
+- Properly documented scrum meetings including each team members activities, obstacles, and contributions. 
+- Properly documented tasks and their associated stories in the Trello board.
+- Properly documented sprint progress with a burndown chart. 
+- Pushed all reviewed code to github repository.
+- Finalized readme for sprint 2 submission.  
 
 #### 9.You have a Continuous Integration system running. The CI system automatically builds your code every time you merge to master. The CI system executes your tests every time it builds the code. The evidence/link is included in your GitHub repo. 10.0 pts
 
