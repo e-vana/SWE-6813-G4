@@ -192,6 +192,12 @@ During this meeting we worked on finalizing the matchmaking algorithm and how it
 
 #### 7. There is evidence that you are building your product test-first. There are at least 2 BDD / A-TDD test in your test suite (at least 1 new one this sprint), and it passes. There are at least 20 unit tests in your test suite (at least 10 new unit tests this sprint), and they all pass. 15.0 pts
 
+In this sprint, the matchmaking functionality is beginning to be fleshed out.  These functions will end up doing a lot and the scope of the unit testing this sprint was focused on these functions.
+
+![image](https://user-images.githubusercontent.com/24251508/230140295-30daaf58-1913-4ca4-b15e-d2a5d2c3aace.png)
+
+In the above image you can see the test suite running and being passed with some of the matchmaking algorithm functions tested in addition to the previous unit tests from sprint 1.
+
 #### 8. Your team conducts a Sprint Review. There should be an evidence to that. 5.0 pts
 
 <img width="1440" alt="Screenshot 2023-04-04 at 11 23 01 AM" src="https://user-images.githubusercontent.com/103462168/229970347-31a49c51-a9b3-45cc-b8fd-ac14a420b1fc.png">
@@ -208,7 +214,25 @@ We met to review that the following tasks have been completed:
 
 #### 9.You have a Continuous Integration system running. The CI system automatically builds your code every time you merge to master. The CI system executes your tests every time it builds the code. The evidence/link is included in your GitHub repo. 10.0 pts
 
+A Continuous Integration system exists on the repository using Github Actions.  Once a pull request is initiated on the main branch and approved by a repository owner, a Github Action named [CICD](https://github.com/e-vana/SWE-6813-G4/actions/workflows/cicd.yml) gets run.  Broadly, this action creates a virtual machine using Githubs resources, installs the proper project dependencies, performs the typescript compilation and then runs the Jest test suite.
+
+![image](https://user-images.githubusercontent.com/24251508/230135411-b62cf406-c8f4-4fc9-8c68-182ae5573460.png)
+
+In the above image you can see the workflow and that the deployment portions are contingent on the "Run Unit Tests" action being successful.
+
+![image](https://user-images.githubusercontent.com/24251508/230135703-71cb8283-ba42-4b5c-b98c-e549d631c85e.png)
+
+In the above image you can see the steps taken in the "Run Unit Tests" action and the test results. Note, this is not reflective of all current tests, this image just shows the CI process.
+
 #### 10. You have a Continuous Deployment system running. The CD system deploys your software to a production-like environment. The CD system executes additional tests of your software in the production-like environment. The CD system deploys your software to a live production environment. Your live production environment works properly. The evidence/link is included in your GitHub repo. 10.0 pts
+
+A Continuous Deployment system exists on the repository using Github Actions.  Once a pull request is initiated on the main branch and approved by a repository owner, a Github Action named [CICD](https://github.com/e-vana/SWE-6813-G4/actions/workflows/cicd.yml) gets run.  Broadly, this action creates a virtual machine using Githubs resources, installs the proper project dependencies, performs the typescript compilation and then runs the Jest test suite.  If all of the test actions pass, the continuous deployment part of the workflow is triggered.  Both the frontend and backend are deployed to separate Digital Ocean application isntances; this Github Action triggers the build process and a specific YAML configuration on Digital Ocean for both components.
+
+![image](https://user-images.githubusercontent.com/24251508/230136576-bef3ce5b-5577-410e-98c8-5b9439b8e606.png)
+
+In the above image you can see the Digital Ocean backend deployment action being dispatched after a successful test run.
+
+The frontend deployment can be accessed [here](https://hammerhead-app-adu3m.ondigitalocean.app/)
 
 ### Trello
 Public Link : https://trello.com/w/workspace57274945
