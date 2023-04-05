@@ -19,7 +19,10 @@ router.post("/login", async (req: Request, res: Response) => {
     `;
     req.body.email = sanitizeEmail(req.body.email);
     const [results] = await connection.query<User[]>(query, req.body.email);
-    let t = await bcrypt.compareSync(req.body.password, results[0].password);
+    let passwordsMatch = await bcrypt.compareSync(req.body.password, results[0].password);
+    if(!passwordsMatch){
+      throw {message: "Incorrect password."}
+    }
     const token = jwt.sign({ id: results[0].id }, process.env.JWT_SECRET!);
     await connection.end();
     res.status(200).json({ success: true, token: token });
