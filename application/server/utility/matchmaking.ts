@@ -1,14 +1,10 @@
-import data from "../data/matchmaking_sample_data.json";
-import { RowDataPacket, ResultSetHeader } from "mysql2";
-// let mmData = data as MatchMakingEntry[];
-
-export interface MatchMakingEntry extends RowDataPacket {
+export interface MatchMakingEntry {
   session_id: number;
   user_id: number;
   game_id: number;
   vibe_weight: number;
   content_weight: number;
-  time_entered: number;
+  time_entered: string;
   active: number;
 }
 export interface MatchMakingLobby {
