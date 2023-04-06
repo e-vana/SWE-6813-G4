@@ -202,15 +202,7 @@ In the above image you can see the test suite running and being passed with some
 
 <img width="1440" alt="Screenshot 2023-04-04 at 11 23 01 AM" src="https://user-images.githubusercontent.com/103462168/229970347-31a49c51-a9b3-45cc-b8fd-ac14a420b1fc.png">
 
-We met to review that the following tasks have been completed:
-- Sprint 2 build works and satisfies the 3 user stories we created.
-- Sprint 2 build passes the testing suite. 
-- Identified issues and tasks that need to be implemented in sprint 3. Each task is documented on the trello board.
-- Properly documented scrum meetings including each team members activities, obstacles, and contributions. 
-- Properly documented tasks and their associated stories in the Trello board.
-- Properly documented sprint progress with a burndown chart. 
-- Pushed all reviewed code to github repository.
-- Finalized readme for sprint 2 submission.  
+The goals we set for sprint 2 were over ambitious. We have made progress with each of the stories but were not able to fully satisfy every requirement. Our project is deployed and utitlizes CI/CD. Using jest we were only able to write tests for the backend. We have pushed the remaining tasks over to sprint 3. 
 
 #### 9.You have a Continuous Integration system running. The CI system automatically builds your code every time you merge to master. The CI system executes your tests every time it builds the code. The evidence/link is included in your GitHub repo. 10.0 pts
 
