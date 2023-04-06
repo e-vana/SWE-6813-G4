@@ -198,6 +198,10 @@ In this sprint, the matchmaking functionality is beginning to be fleshed out.  T
 
 In the above image you can see the test suite running and being passed with some of the matchmaking algorithm functions tested in addition to the previous unit tests from sprint 1.
 
+Two end to end (E2E) tests were written in [Cypress](https://www.cypress.io/) to test the user login and registration flows to cover the BDD component.  These tests are written in plain language and map to easily understandable features on the application (Register to create an account and Login with that account).  You can see those tests below.
+
+![image](https://user-images.githubusercontent.com/24251508/230264225-2ae69cfd-d616-4324-b66b-85d48aedc904.png)
+
 #### 8. Your team conducts a Sprint Review. There should be an evidence to that. 5.0 pts
 
 <img width="1440" alt="Screenshot 2023-04-04 at 11 23 01 AM" src="https://user-images.githubusercontent.com/103462168/229970347-31a49c51-a9b3-45cc-b8fd-ac14a420b1fc.png">
