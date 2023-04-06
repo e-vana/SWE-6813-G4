@@ -31,7 +31,6 @@ describe("Test the function matchmaking for desired behavior.", () => {
     expect(t![0].game_id).toEqual(5);
     expect(t![0].lobby.length).toEqual(5);
     expect(t![1]).toBeUndefined;
-
     expect(t![0].lobby[0].game_id).toEqual(game_id);
     expect(t![0].lobby[1].game_id).toEqual(game_id);
     expect(t![0].lobby[2].game_id).toEqual(game_id);

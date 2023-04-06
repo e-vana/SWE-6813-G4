@@ -78,7 +78,9 @@ describe("Test the function matchmakingJob for desired behavior.", () => {
       createLobbyAndInsertPlayersIntoLobby as jest.MockedFunction<
         typeof createLobbyAndInsertPlayersIntoLobby
       >;
-    mockedGetAllUsersInMatchmakingQueue.mockResolvedValueOnce([]);
+    mockedGetAllUsersInMatchmakingQueue.mockResolvedValueOnce(
+      [] as MatchMakingEntryRowPacket[]
+    );
     await matchmakingJob();
     expect(mockedGetAllUsersInMatchmakingQueue).toHaveBeenCalled();
     expect(mockedCreateLobbyAndInsertPlayersIntoLobby).not.toHaveBeenCalled();

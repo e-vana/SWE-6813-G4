@@ -5,8 +5,9 @@
     "game_id": 2,
     "vibe_weight": 5,
     "content_weight": 5,
-    "time_entered": 1679533767853,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 2,
@@ -14,8 +15,9 @@
     "game_id": 10,
     "vibe_weight": 1,
     "content_weight": 3,
-    "time_entered": 1679533767834,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 3,
@@ -23,8 +25,9 @@
     "game_id": 1,
     "vibe_weight": 5,
     "content_weight": 4,
-    "time_entered": 1679533767827,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 4,
@@ -32,8 +35,9 @@
     "game_id": 4,
     "vibe_weight": 1,
     "content_weight": 4,
-    "time_entered": 1679533767817,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 5,
@@ -41,8 +45,9 @@
     "game_id": 2,
     "vibe_weight": 5,
     "content_weight": 5,
-    "time_entered": 1679533767835,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 6,
@@ -50,8 +55,9 @@
     "game_id": 9,
     "vibe_weight": 2,
     "content_weight": 1,
-    "time_entered": 1679533767840,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 7,
@@ -59,8 +65,9 @@
     "game_id": 6,
     "vibe_weight": 1,
     "content_weight": 2,
-    "time_entered": 1679533767837,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 8,
@@ -68,8 +75,9 @@
     "game_id": 2,
     "vibe_weight": 3,
     "content_weight": 3,
-    "time_entered": 1679533767840,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 9,
@@ -77,8 +85,9 @@
     "game_id": 2,
     "vibe_weight": 5,
     "content_weight": 3,
-    "time_entered": 1679533767819,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 10,
@@ -86,8 +95,9 @@
     "game_id": 9,
     "vibe_weight": 4,
     "content_weight": 4,
-    "time_entered": 1679533767817,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 11,
@@ -95,8 +105,9 @@
     "game_id": 7,
     "vibe_weight": 1,
     "content_weight": 4,
-    "time_entered": 1679533767833,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 12,
@@ -104,8 +115,9 @@
     "game_id": 2,
     "vibe_weight": 5,
     "content_weight": 1,
-    "time_entered": 1679533767861,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 13,
@@ -113,8 +125,9 @@
     "game_id": 8,
     "vibe_weight": 1,
     "content_weight": 1,
-    "time_entered": 1679533767840,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   },
   {
     "session_id": 14,
@@ -122,7 +135,8 @@
     "game_id": 6,
     "vibe_weight": 1,
     "content_weight": 3,
-    "time_entered": 1679533767838,
-    "lobby_size": 5
+    "time_entered": "2023-04-04 23:51:56",
+    "lobby_size": 5,
+    "active": 1
   }
 ]

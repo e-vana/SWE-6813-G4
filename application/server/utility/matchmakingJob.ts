@@ -2,15 +2,15 @@ import { createLobbyAndInsertPlayersIntoLobby } from "./createLobbyAndInsertPlay
 import { getAllUsersInMatchmakingQueue } from "./getAllUsersInMatchmakingQueue";
 import { matchmaking } from "./matchmaking";
 
-export const matchmakingJob = async function(){
+export const matchmakingJob = async function () {
   try {
     let u = await getAllUsersInMatchmakingQueue();
-    if(u.length < 5){
+    if (u.length < 5) {
       //emit players in queue
       return;
     }
     let lobbies = matchmaking(u);
-    if(!lobbies){
+    if (!lobbies) {
       return;
     }
     await createLobbyAndInsertPlayersIntoLobby(lobbies);
@@ -21,4 +21,6 @@ export const matchmakingJob = async function(){
   } catch (error) {
     console.log(error);
   }
-}
+};
+
+matchmakingJob();
