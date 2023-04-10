@@ -1,22 +1,14 @@
-import express, { Express, Response, Request } from "express";
 import dotenv from "dotenv";
-import cors from "cors";
-import { authRouter } from "./routes/auth.routes";
-import { userRouter } from "./routes/users.routes";
-import { gamesRouter } from "./routes/games.routes";
+import http from 'http';
+import { app } from "./app";
+import { applicationSocket } from "./utility/websocket";
+
 dotenv.config();
 
-const app: Express = express();
 const port = process.env.PORT;
-
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-app.use("/api/auth", authRouter);
-app.use("/api/users", userRouter);
-app.use("/api/games", gamesRouter);
-
-app.listen(port, () => {
+const server = http.createServer(app);
+applicationSocket(server);
+server.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
+

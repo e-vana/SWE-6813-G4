@@ -2,7 +2,6 @@ import { MatchMakingEntry, matchmaking } from "../utility/matchmaking";
 import data from "../data/matchmaking_sample_data.json";
 import data_small from "../data/matchmaking_sample_data_small.json";
 import data_one from "../data/matchmaking_sample_data_one.json";
-//dataset needs to be regenerated to include the active: {INTEGER} key
 const testData = data as MatchMakingEntry[];
 const testDataSmall = data_small as MatchMakingEntry[];
 const testDataOne = data_one as MatchMakingEntry[];
