@@ -86,7 +86,7 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ success: false, error });
   }
 });
-router.patch(
+router.post(
   "/status",
   decodeToken,
   async (req: Request, res: Response): Promise<void> => {
@@ -108,7 +108,7 @@ router.patch(
     }
   }
 );
-router.patch(
+router.post(
   "/:id",
   decodeToken,
   async (req: Request, res: Response): Promise<void> => {

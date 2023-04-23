@@ -16,29 +16,30 @@ import {
   Stack,
   TextField,
   Typography,
+  CircularProgress
 } from "@mui/material";
 import jwtDecode from "jwt-decode";
 // import jwt_decode from "jwt-decode";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserStore } from "../Stores/UserStore";
 import { getGames } from "../utils/games";
 import { changeStatus } from "../utils/user";
+import { io } from "socket.io-client";
 
 interface Token {
   id: number;
   iat: number;
 }
+const socket = io("http://localhost:3005", {query: {token: token}});
 
 const Match = () => {
   const { data: games, isLoading } = useQuery("getGames", getGames, {
-    refetchOnMount: true,
+    // refetchOnMount: true,
   });
-  console.log(games?.games);
   const token = useUserStore((state) => state.token);
   const { id } = jwtDecode<Token>(token);
-  console.log(id);
   const [game, setGame] = useState("");
   const [vibe, setVibe] = useState(0);
   const [content, setContent] = useState(0);
@@ -62,13 +63,39 @@ const Match = () => {
   const setStatus = useUserStore((state) => state.setStatus);
   const reset = useUserStore((state) => state.reset);
   const navigate = useNavigate();
+
+  //matchmaking logic
+  const [isSearchingForGame, setIsSearchingForGame] = useState<boolean>(false);
+  const [isConnectedToMatchMakingService, setIsConnectedToMatchMakingService] = useState<boolean>(false);
+  const [playersInQueue, setPlayersInQueue] = useState<number>(0);
+
+  useEffect(() => {
+    socket.on('connect', () => {
+      setIsConnectedToMatchMakingService(true);
+      console.log("Connected!")
+    });
+    socket.on('disconnect', () => {
+      setIsConnectedToMatchMakingService(false);
+      console.log("Disconnected!")
+
+    });
+    socket.on("players-in-queue", (message) => {
+      setPlayersInQueue(message.playersInQueue)
+    })
+    return () => {
+      socket.off('connection');
+      socket.off('disconnect');
+    };
+  }, [])
   const handleSubmit = () => {
     setCurrentGame(game);
     setCurrentVibe(vibe);
     setCurrentContent(content);
     setStatus(2);
     changeStatus(2);
-    navigate("/party");
+    setIsSearchingForGame(true);
+    //connect to socket 
+    // navigate("/party");
   };
   const logout = () => {
     reset();
@@ -226,10 +253,30 @@ const Match = () => {
             </RadioGroup>
           </FormControl>
         </Stack>
-        <Button variant="contained" onClick={handleSubmit}>
-          Find Me A Game
+        <Button disabled={isSearchingForGame || !vibe || !content} variant="contained" onClick={handleSubmit}>
+          {
+            !isSearchingForGame && (
+              <>Find me a Game</>
+            )
+          }
+          {
+            isSearchingForGame && (
+              <><CircularProgress size={24} sx={{ color: "white"}}></CircularProgress></>
+            )
+          }
         </Button>
-        <Stack spacing={2}>
+        {isSearchingForGame && (
+        <Typography sx={{ color: "text.primary" }}>
+        Finding a Match...
+      </Typography>
+        )}
+
+        
+          <Typography sx={{ color: "text.primary" }}>
+          Players in Queue: {playersInQueue}
+        </Typography>
+
+        {/* <Stack spacing={2}>
           <Typography variant="h5" sx={{ color: "text.primary" }}>
             Friends
           </Typography>
@@ -313,7 +360,7 @@ const Match = () => {
               </Typography>
             </Stack>
           </Stack>
-        </Stack>
+        </Stack> */}
       </Stack>
     </Box>
   );

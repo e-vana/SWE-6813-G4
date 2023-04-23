@@ -21,7 +21,7 @@ const Login = () => {
       .then(() => setLoggedIn(true))
       .then(() => setStatus(1))
       .then(() => changeStatus(1))
-      .then(() => navigate("/"));
+      .then(() => navigate("/matchmaking"));
   };
 
   return (

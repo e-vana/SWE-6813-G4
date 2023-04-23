@@ -13,18 +13,19 @@ const server = http.createServer(app);
 export const io = new Server(server);
 
 //Create websocket authentication middleware
-io.use((socket, next) => {
-  if(socket.handshake.query && socket.handshake.query.token){
-    //validate token
-    console.log(socket.handshake.query.token)
-    next();
-  }else {
-    next(new Error( 'Cannot authenticate request.'))
-  }
-})
+// io.use((socket, next) => {
+//   if(socket.handshake.query && socket.handshake.query.token){
+//     //validate token
+//     console.log(socket.handshake.query.token)
+//     next();
+//   }else {
+//     next(new Error( 'Cannot authenticate request.'))
+//   }
+// })
 io.on('connection', (socket) => {
   console.log(socket.id)
-  socket.emit('connected', {message: "Connected to matchmaking services.", success: true})
+  console.log(socket.handshake.query.token)
+  socket.emit('connection', {message: "Connected to matchmaking services.", success: true})
 });
 io.on('disconnect', (socket) => {
   socket.emit('disconnect', {message: "Disconnected from matchmaking services."});
@@ -32,7 +33,7 @@ io.on('disconnect', (socket) => {
 
 setInterval(async () => {
   matchmakingJob();
-}, 5000)
+}, 60000)
 
 
 // Run the API

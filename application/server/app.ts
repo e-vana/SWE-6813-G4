@@ -10,7 +10,7 @@ export const app: Express = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+app.options('*', cors()) 
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/games", gamesRouter);
