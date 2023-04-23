@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
-import http from 'http';
+import http from "http";
 import { app } from "./app";
-import { Socket, Server } from 'socket.io';
+import { Socket, Server } from "socket.io";
 import { matchmakingJob } from "./utility/matchmakingJob";
 
 dotenv.config();
@@ -22,22 +22,26 @@ export const io = new Server(server);
 //     next(new Error( 'Cannot authenticate request.'))
 //   }
 // })
-io.on('connection', (socket) => {
-  console.log(socket.id)
-  console.log(socket.handshake.query.token)
-  socket.emit('connection', {message: "Connected to matchmaking services.", success: true})
+io.on("connection", (socket) => {
+  // console.log(socket.handshake.query.token);
+  console.log(socket.id);
+  socket.emit("connection", { message: "Connected to matchmaking" });
+  socket.emit("matchmaking-service-status", {
+    message: "Online",
+    success: true,
+  });
 });
-io.on('disconnect', (socket) => {
-  socket.emit('disconnect', {message: "Disconnected from matchmaking services."});
-})
+io.on("disconnect", (socket) => {
+  socket.emit("disconnect", {
+    message: "Disconnected from matchmaking services.",
+  });
+});
 
 setInterval(async () => {
   matchmakingJob();
-}, 60000)
-
+}, 10000);
 
 // Run the API
 server.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
-

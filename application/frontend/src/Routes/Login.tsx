@@ -16,8 +16,15 @@ const Login = () => {
     password: "",
   });
   const handleSubmit = (inputs: any) => {
+    if (!inputs.email || !inputs.password) {
+      return;
+    }
     login(inputs)
-      .then((res) => setToken(res?.data.token))
+      .then((res) => {
+        setToken(res?.data.token);
+        localStorage.setItem("token", res?.data.token);
+        console.log(localStorage.getItem("token"));
+      })
       .then(() => setLoggedIn(true))
       .then(() => setStatus(1))
       .then(() => changeStatus(1))
@@ -52,7 +59,11 @@ const Login = () => {
               setInputs({ ...inputs, password: event.target.value })
             }
           />
-          <Button variant="contained" onClick={() => handleSubmit(inputs)}>
+          <Button
+            variant="contained"
+            onClick={() => handleSubmit(inputs)}
+            disabled={!inputs.email || !inputs.password}
+          >
             Login
           </Button>
         </Stack>

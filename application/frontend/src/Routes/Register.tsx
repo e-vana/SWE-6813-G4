@@ -26,7 +26,7 @@ const Register = () => {
       .then(() => setLoggedIn(true))
       .then(() => setStatus(1))
       .then(() => changeStatus(1))
-      .then(() => navigate("/"));
+      .then(() => navigate("/login"));
   };
   const handleSubmit = (inputs: any) => {
     passConfirmed ? createUser() : console.log("passwords dont match");
@@ -70,7 +70,11 @@ const Register = () => {
               checkPass(inputs.password, event.target.value);
             }}
           />
-          <Button variant="contained" onClick={() => handleSubmit(inputs)}>
+          <Button
+            variant="contained"
+            onClick={() => handleSubmit(inputs)}
+            disabled={!inputs.email || !inputs.password}
+          >
             Sign Up
           </Button>
         </Stack>
