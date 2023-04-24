@@ -101,7 +101,7 @@ const Match = () => {
   } = useMutation("cancelMatchmakingQueue", cancelMatchMakingQueue);
 
   useEffect(() => {
-    const socket = io("http://localhost:3005");
+    const socket = io(process.env.REACT_APP_BASE_URL!);
     socket.on("connect", () => {
       setIsConnectedToMatchMakingService(true);
       setMatchmakingSocketId(socket.id);
