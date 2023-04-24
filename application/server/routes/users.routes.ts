@@ -86,7 +86,7 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
     res.status(500).json({ success: false, error });
   }
 });
-router.patch(
+router.post(
   "/status",
   decodeToken,
   async (req: Request, res: Response): Promise<void> => {
@@ -108,7 +108,46 @@ router.patch(
     }
   }
 );
-router.patch(
+router.post(
+  "/join-matchmaking",
+  decodeToken,
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      console.log(req.body);
+      let connection = await mysql.createConnection(dbConnectionString!);
+      //set all other entiries from this user as inactive
+      const [results, fields] = await connection.query(
+        `INSERT matchmaking_queue SET ?`,
+        [req.body]
+      );
+      await connection.end();
+      res.status(200).json({ success: true });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, error });
+    }
+  }
+);
+router.post(
+  "/cancel-matchmaking",
+  decodeToken,
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      let connection = await mysql.createConnection(dbConnectionString!);
+      //set all other entiries from this user as inactive
+      const [results, fields] = await connection.query(
+        `UPDATE matchmaking_queue SET active = 0 WHERE user_id = ?`,
+        [req.body.userId]
+      );
+      await connection.end();
+      res.status(200).json({ success: true });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ success: false, error });
+    }
+  }
+);
+router.post(
   "/:id",
   decodeToken,
   async (req: Request, res: Response): Promise<void> => {

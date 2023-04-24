@@ -16,30 +16,44 @@ import {
   Stack,
   TextField,
   Typography,
+  CircularProgress,
+  Alert,
+  AlertTitle,
 } from "@mui/material";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import jwtDecode from "jwt-decode";
 // import jwt_decode from "jwt-decode";
-import { useState } from "react";
-import { useQuery } from "react-query";
+import { useEffect, useState } from "react";
+import { useMutation, useQuery } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserStore } from "../Stores/UserStore";
 import { getGames } from "../utils/games";
-import { changeStatus } from "../utils/user";
+import {
+  MatchMakingQueueInformation,
+  cancelMatchMakingQueue,
+  changeStatus,
+  connectToMatchmakingQueue,
+} from "../utils/user";
+import { io } from "socket.io-client";
 
 interface Token {
   id: number;
   iat: number;
 }
+interface MatchDetails {
+  message: string;
+  lobby_id: number;
+  players: string[];
+}
 
 const Match = () => {
   const { data: games, isLoading } = useQuery("getGames", getGames, {
-    refetchOnMount: true,
+    // refetchOnMount: true,
   });
-  console.log(games?.games);
+
   const token = useUserStore((state) => state.token);
   const { id } = jwtDecode<Token>(token);
-  console.log(id);
-  const [game, setGame] = useState("");
+  const [game, setGame] = useState<number>(0);
   const [vibe, setVibe] = useState(0);
   const [content, setContent] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -51,10 +65,10 @@ const Match = () => {
     setAnchorEl(null);
   };
   const handleVibeChange = (event: any) => {
-    setVibe(event?.target.value);
+    setVibe(parseInt(event?.target.value));
   };
   const handleContentChange = (event: any) => {
-    setContent(event?.target.value);
+    setContent(parseInt(event?.target.value));
   };
   const setCurrentGame = useUserStore((state) => state.setCurrentGame);
   const setCurrentVibe = useUserStore((state) => state.setVibe);
@@ -62,13 +76,84 @@ const Match = () => {
   const setStatus = useUserStore((state) => state.setStatus);
   const reset = useUserStore((state) => state.reset);
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    setCurrentGame(game);
+
+  //matchmaking logic
+  const {
+    mutateAsync: joinMatchmakingQueueAsync,
+    isLoading: joinMatchmakingQueueIsLoading,
+  } = useMutation("connectToMatchmakingQueue", connectToMatchmakingQueue);
+  const [isSearchingForGame, setIsSearchingForGame] = useState<boolean>(false);
+  const [isConnectedToMatchMakingService, setIsConnectedToMatchMakingService] =
+    useState<boolean>(false);
+  const [matchmakingServiceStatus, setMatchmakingServiceStatus] =
+    useState<string>("");
+  const [matchmakingSocketId, setMatchmakingSocketId] = useState<string>("");
+  const [playersInQueue, setPlayersInQueue] = useState<number>(0);
+
+  //When a match is found, set these fields
+  const [matchFound, setMatchFound] = useState<boolean>(false);
+  const [matchDetails, setMatchDetails] = useState<MatchDetails>();
+
+  //cancel matchmaking logic
+  const {
+    mutateAsync: cancelMatchmakingQueueAsync,
+    isLoading: cancelMatchmakingQueueIsLoading,
+  } = useMutation("cancelMatchmakingQueue", cancelMatchMakingQueue);
+
+  useEffect(() => {
+    const socket = io(process.env.REACT_APP_BASE_URL!);
+    socket.on("connect", () => {
+      setIsConnectedToMatchMakingService(true);
+      setMatchmakingSocketId(socket.id);
+    });
+    socket.on("match-found", (message) => {
+      console.log(message);
+      setMatchFound(true);
+      setMatchDetails(message);
+    });
+    socket.on("matchmaking-service-status", (message) => {
+      setMatchmakingServiceStatus(message.message);
+    });
+
+    socket.on("players-in-queue", (message) => {
+      setPlayersInQueue(message.playersInQueue);
+    });
+    socket.on("disconnect", () => {
+      setIsConnectedToMatchMakingService(false);
+      console.log("Disconnected!");
+    });
+    return () => {
+      socket.off("players-in-queue");
+      socket.off("matchmaking-service-status");
+      socket.off("connection");
+      socket.off("disconnect");
+    };
+  }, []);
+  const handleCancel = async () => {
+    setStatus(1);
+    changeStatus(1);
+    setIsSearchingForGame(false);
+    await cancelMatchmakingQueueAsync(id);
+  };
+  const handleSubmit = async () => {
     setCurrentVibe(vibe);
     setCurrentContent(content);
     setStatus(2);
     changeStatus(2);
-    navigate("/party");
+    setIsSearchingForGame(true);
+    let payload: MatchMakingQueueInformation = {
+      active: 1,
+      content_weight: content,
+      vibe_weight: vibe,
+      user_id: id,
+      game_id: game,
+      time_entered: new Date().toISOString().slice(0, 19).replace("T", " "),
+      socket_id: matchmakingSocketId,
+    };
+    await joinMatchmakingQueueAsync(payload);
+    console.log(payload);
+    //connect to socket
+    // navigate("/party");
   };
   const logout = () => {
     reset();
@@ -110,6 +195,7 @@ const Match = () => {
           Logout
         </MenuItem>
       </Menu>
+
       <Stack mx="auto" my={4} spacing={1} justifyContent="center" maxWidth="sm">
         <Typography variant="h5" sx={{ color: "text.primary" }}>
           Select A Game
@@ -120,11 +206,11 @@ const Match = () => {
             label="Select Game"
             variant="outlined"
             value={game}
-            onChange={(event) => setGame(event.target.value)}
+            onChange={(event) => setGame(parseInt(event.target.value))}
             fullWidth
           >
             {games.games.map((game: any) => (
-              <MenuItem key={game.id} value={game.title}>
+              <MenuItem key={game.id} value={game.id}>
                 {game.title}
               </MenuItem>
             ))}
@@ -226,10 +312,62 @@ const Match = () => {
             </RadioGroup>
           </FormControl>
         </Stack>
-        <Button variant="contained" onClick={handleSubmit}>
-          Find Me A Game
-        </Button>
-        <Stack spacing={2}>
+
+        {!matchFound && (
+          <>
+            <Button
+              disabled={isSearchingForGame || !vibe || !content}
+              variant="contained"
+              onClick={handleSubmit}
+            >
+              {!isSearchingForGame && <>Find me a Game</>}
+              {isSearchingForGame && (
+                <>
+                  <CircularProgress
+                    size={24}
+                    sx={{ color: "white" }}
+                  ></CircularProgress>
+                </>
+              )}
+            </Button>
+            {isSearchingForGame && (
+              <Button variant="contained" color="error" onClick={handleCancel}>
+                Cancel
+              </Button>
+            )}
+
+            {isSearchingForGame && (
+              <Typography sx={{ color: "text.primary" }}>
+                Finding a Match...
+              </Typography>
+            )}
+
+            <Typography sx={{ color: "text.primary" }}>
+              <span style={{ display: "flex", alignItems: "center" }}>
+                Matchmaking Service: {matchmakingServiceStatus}
+                <CheckCircleIcon color="success"></CheckCircleIcon>
+              </span>
+            </Typography>
+            <Typography sx={{ color: "text.primary" }}>
+              Matchmaking Session ID: {matchmakingSocketId}
+            </Typography>
+
+            <Typography sx={{ color: "text.primary" }}>
+              Players in Queue: {playersInQueue}
+            </Typography>
+          </>
+        )}
+
+        {matchFound && (
+          <Alert severity="info" variant="filled">
+            <AlertTitle>Match Found!</AlertTitle>
+            <a href={`/${matchDetails?.lobby_id}`}>
+              Lobby ID: {matchDetails?.lobby_id}
+            </a>
+          </Alert>
+        )}
+
+        {/* <Stack spacing={2}>
           <Typography variant="h5" sx={{ color: "text.primary" }}>
             Friends
           </Typography>
@@ -313,7 +451,7 @@ const Match = () => {
               </Typography>
             </Stack>
           </Stack>
-        </Stack>
+        </Stack> */}
       </Stack>
     </Box>
   );

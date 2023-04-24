@@ -40,6 +40,19 @@ const authRouter = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/matchmaking",
+    children: [
+      {
+        index: true,
+        element: <Match></Match>
+      },
+      {
+        path: "lobby",
+        element: <Party />
+      }
+    ]
+  }
 ]);
 
 const mainRouter = createBrowserRouter([
@@ -61,9 +74,10 @@ const mainRouter = createBrowserRouter([
 function App() {
   const loggedIn = useUserStore((state) => state.loggedIn);
   return (
+
     <ThemeProvider theme={darkTheme}>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={loggedIn ? mainRouter : authRouter} />
+        <RouterProvider router={authRouter} />
       </QueryClientProvider>
     </ThemeProvider>
   );

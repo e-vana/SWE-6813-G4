@@ -1,22 +1,47 @@
-import express, { Express, Response, Request } from "express";
 import dotenv from "dotenv";
-import cors from "cors";
-import { authRouter } from "./routes/auth.routes";
-import { userRouter } from "./routes/users.routes";
-import { gamesRouter } from "./routes/games.routes";
+import http from "http";
+import { app } from "./app";
+import { Socket, Server } from "socket.io";
+import { matchmakingJob } from "./utility/matchmakingJob";
+
 dotenv.config();
 
-const app: Express = express();
 const port = process.env.PORT;
+const server = http.createServer(app);
 
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+//Create websocket connections
+export const io = new Server(server);
 
-app.use("/api/auth", authRouter);
-app.use("/api/users", userRouter);
-app.use("/api/games", gamesRouter);
+//Create websocket authentication middleware
+// io.use((socket, next) => {
+//   if(socket.handshake.query && socket.handshake.query.token){
+//     //validate token
+//     console.log(socket.handshake.query.token)
+//     next();
+//   }else {
+//     next(new Error( 'Cannot authenticate request.'))
+//   }
+// })
+io.on("connection", (socket) => {
+  // console.log(socket.handshake.query.token);
+  console.log(socket.id);
+  socket.emit("connection", { message: "Connected to matchmaking" });
+  socket.emit("matchmaking-service-status", {
+    message: "Online",
+    success: true,
+  });
+});
+io.on("disconnect", (socket) => {
+  socket.emit("disconnect", {
+    message: "Disconnected from matchmaking services.",
+  });
+});
 
-app.listen(port, () => {
+setInterval(async () => {
+  matchmakingJob();
+}, 10000);
+
+// Run the API
+server.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
