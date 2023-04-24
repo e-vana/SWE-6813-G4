@@ -6,12 +6,11 @@ import { matchmaking } from "./matchmaking";
 export const matchmakingJob = async function () {
   try {
     let d = new Date();
-    console.log(
-      `Running matchmaking @ ${d.toLocaleDateString()} - ${d.toTimeString()}`
-    );
+    // console.log(
+    //   `Running matchmaking @ ${d.toLocaleDateString()} - ${d.toTimeString()}`
+    // );
     let u = await getAllUsersInMatchmakingQueue();
     io.emit("players-in-queue", { playersInQueue: u.length });
-    io.in("1234").emit("match-found", { matchId: "999888" });
     if (u.length < 5) {
       //emit players in queue
       return;
