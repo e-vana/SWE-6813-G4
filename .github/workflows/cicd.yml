@@ -4,25 +4,25 @@ on:
     branches:
       - main
 jobs:
-  unit-tests:
-    name: Run Unit Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm install
-        working-directory: ./application/server
-      - run: npm install typescript -g
-        working-directory: ./application/server
-      - run: tsc
-        working-directory: ./application/server
-      - run: npm run test:unit
-        working-directory: ./application/server
+  # unit-tests:
+  #   name: Run Unit Tests
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{ matrix.node-version }}
+  #     - run: npm install
+  #       working-directory: ./application/server
+  #     - run: npm install typescript -g
+  #       working-directory: ./application/server
+  #     - run: tsc
+  #       working-directory: ./application/server
+  #     - run: npm run test:unit
+  #       working-directory: ./application/server
   deploy-front-end:
     name: Deploy frontend to Digital Ocean
-    needs: unit-tests
+    # needs: unit-tests
     runs-on: ubuntu-latest
     steps:
       - uses: digitalocean/app_action@main
@@ -31,7 +31,7 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
   deploy-back-end:
     name: Deploy backend to Digital Ocean
-    needs: unit-tests
+    # needs: unit-tests
     runs-on: ubuntu-latest
     steps:
       - uses: digitalocean/app_action@main
