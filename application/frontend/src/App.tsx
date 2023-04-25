@@ -10,10 +10,17 @@ import Landing from "./Routes/Landing";
 import Register from "./Routes/Register";
 import Login from "./Routes/Login";
 import Match from "./Routes/Match";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
 import { useUserStore } from "./Stores/UserStore";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Party from "./Routes/Party";
+import PrivateRoutes from "./Routes/PrivateRoutes";
 
 const darkTheme = createTheme({
   palette: {
@@ -45,14 +52,14 @@ const authRouter = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Match></Match>
+        element: <Match></Match>,
       },
       {
         path: "lobby",
-        element: <Party />
-      }
-    ]
-  }
+        element: <Party />,
+      },
+    ],
+  },
 ]);
 
 const mainRouter = createBrowserRouter([
@@ -74,10 +81,19 @@ const mainRouter = createBrowserRouter([
 function App() {
   const loggedIn = useUserStore((state) => state.loggedIn);
   return (
-
     <ThemeProvider theme={darkTheme}>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={authRouter} />
+        <BrowserRouter>
+          <Routes>
+            <Route element={<PrivateRoutes />}>
+              <Route element={<Match />} path="/home" />
+              <Route element={<Party />} path="/party" />
+            </Route>
+            <Route element={<Landing />} index />
+            <Route element={<Login />} path="/login" />
+            <Route element={<Register />} path="/register" />
+          </Routes>
+        </BrowserRouter>
       </QueryClientProvider>
     </ThemeProvider>
   );
