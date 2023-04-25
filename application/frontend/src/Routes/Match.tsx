@@ -157,6 +157,8 @@ const Match = () => {
   };
   const logout = () => {
     reset();
+    console.clear();
+    localStorage.clear();
   };
   return (
     <Box minHeight="100vh" p={2} sx={{ backgroundColor: "background.default" }}>

@@ -22,11 +22,15 @@ const Register = () => {
   });
   const createUser = () => {
     register(inputs)
-      .then((res) => setToken(res?.data.token))
+      .then((res) => {
+        setToken(res?.data.token);
+        localStorage.setItem("token", res?.data.token);
+        console.log(localStorage.getItem("token"));
+      })
       .then(() => setLoggedIn(true))
       .then(() => setStatus(1))
       .then(() => changeStatus(1))
-      .then(() => navigate("/login"));
+      .then(() => navigate("/home"));
   };
   const handleSubmit = (inputs: any) => {
     passConfirmed ? createUser() : console.log("passwords dont match");
