@@ -274,7 +274,8 @@ During this meeting we met to discuss the plan for sprint 3. We decided to focus
 #### 6. There is evidence that you paired or mobbed on your code. The evidence could be a photo or video of your team working together, or it could be some other kind of evidence. The evidence is included in your GitHub repo.
 10.0 pts
 
-
+<img width="1210" alt="Screenshot 2023-04-25 at 4 03 22 PM" src="https://user-images.githubusercontent.com/103462168/234390189-4240c9d0-b9d7-4fa6-97cc-567c3396d2f1.png">
+In this meeting John and Evan were working on the matchmaking algorithm for sprint 3. 
 
 #### 7. There is evidence that you are building your product test-first. There are at least 3 BDD / A-TDD tests in your test suite (at least 1 new one this sprint), and it passes. There are at least 30 unit tests in your test suite (at least 10 new unit tests this sprint), and they all pass.
 10.0 pts
