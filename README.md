@@ -230,6 +230,79 @@ In the above image you can see the Digital Ocean backend deployment action being
 
 The frontend deployment can be accessed [here](https://hammerhead-app-adu3m.ondigitalocean.app/)
 
+
+## Sprint 3
+### Criteria and Rubric
+#### 1. You have a forecast of how many story points your team can complete during this sprint. Your forecast is based on the Yesterday's Weather forecasting pattern. The forecast along with its rationale are documented in your git’s repo.
+10.0 pts
+
+Based on what we were able to accomplish from sprint 2 we predicted that we could accomplish 3 stories for sprint 3. These all involve the final requirement of the application which is that a user is able to succesfully enter into matchmaking so they can be paired with compatible players. 
+1. Finishing the matchmaking algorithm that was unfinished from sprint 2.
+2. Integrating web sockets so a user is able to enter into matchmaking.
+3. Complete the matchmaking elements in the UI. 
+
+#### 2. You decomposed stories into tasks. The tasks are clearly listed in your sprint backlog.
+10.0 pts
+
+Our trello board has each story decomposed into tasks. Each card represents a task that is mapped to each story. The completion of all of a stories cards means that all tasks are completed and the story is completed. Completed stories and their respective tasks are backlogged on our board under the "done" category.
+
+#### 3. Your sprint backlog, including both stories and tasks, is represented in a kanban board. The kanban board, or a URL of the kanban board (from your online management tool), is documented in your git’s repo. I should be able to view the board.
+[Update your sprint backlog task board. Make sure the URL or images are available in your GitHub repo].
+10.0 pts
+
+The stories and their associated tasks for sprint 3 can be [viewed on Trello](https://trello.com/b/JRYxW8TT/sprint-3).
+
+#### 4. You have a sprint burndown chart. On the x-axis, you display time markers in units of 1 day. On the y-axis, you display story points remaining to get done. There is a linear curve descending from left to right; the leftmost point of the curve is number of story points in your sprint at sprint day 1; the rightmost point is 0 story points remaining on the last day of the sprint. The burndown chart, or the URL of the burndown chart (from your online management tool), is documented in your git’s repo. I should be able to view the burndown chart.
+[Update your burndown chart. Make sure the URL or images are available in your GitHub repo.]
+10.0 pts
+
+The tasks on the burndown chart directly correlate with a task inside of trello.  The planned tasks blue line is the estimated task completion rate (there's an assumption that there's a linear rate of completion) and the actual tasks red line is the actual rate of task completion throughout the sprints duration.
+
+The Sprint #3 burndown chart can be [viewed here](https://docs.google.com/spreadsheets/d/1q3j7cHHDMNimTq_LC8vwiPS-vyIxROYsbnZN1WLxpEc/edit?usp=sharing).
+<img width="602" alt="image" src="https://user-images.githubusercontent.com/103462168/234371925-2969c8b4-2242-4614-95c7-02d235b4f6a4.png">
+
+#### 5. You have conducted multiple Daily Scrums. You have evidence of at least one daily scrum documented in your git’s repo, should cover the following three items:
+-What did you do in the last 24 hours that helped the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members did which activities.
+-What will you do in the next 24 hours to help the Development Team meet the Sprint Goal? Annotate your team's response so it's clear which team members plan to do which activities.
+- Do you see any impediment that prevents you or the Development Team from meeting the Sprint Goal? What are the impediments? What is your impediment removal plan?
+10.0 pts
+
+<img width="1440" alt="Screenshot 2023-04-10 at 12 24 39 PM" src="https://user-images.githubusercontent.com/103462168/234372429-aa55fa94-2718-40f1-8b9e-bbcb87f26eaa.png">
+During this meeting we met to discuss the plan for sprint 3. We decided to focus on finishing the incomplete stories from sprint 2 first, which is finishing the matchmaking algorithm. Our goal is to fully integrate the matchmaking function of the application so that it is usable for the end user.  In the last 24 hours John has been working with Evan on finishing the matchmaking algorithm, Jordan has been working on the UI elements for the matchmaking function, and Fredy has been continuing to work on the BDD tests and writing the error messages for the front end. 
+
+
+#### 6. There is evidence that you paired or mobbed on your code. The evidence could be a photo or video of your team working together, or it could be some other kind of evidence. The evidence is included in your GitHub repo.
+10.0 pts
+
+
+
+#### 7. There is evidence that you are building your product test-first. There are at least 3 BDD / A-TDD tests in your test suite (at least 1 new one this sprint), and it passes. There are at least 30 unit tests in your test suite (at least 10 new unit tests this sprint), and they all pass.
+10.0 pts
+
+
+
+#### 8. You have a Continuous Integration system running. The CI system automatically builds your code every time you merge to master. The CI system executes your tests every time it builds the code. The evidence/link is included in your GitHub repo.
+5.0 pts
+
+
+
+#### 9. You have a Continuous Deployment system running. The CD system deploys your software to a production-like environment. The CD system executes additional tests of your software in the production-like environment. The CD system deploys your software to a live production environment. Your live production environment works properly. The evidence/link is included in your GitHub repo.
+10.0 pts
+
+
+
+#### 10. Your team conducts a Sprint Review. There should be an evidence to that.
+5.0 pts
+
+<img width="1440" alt="Screenshot 2023-04-23 at 9 25 02 PM" src="https://user-images.githubusercontent.com/103462168/234378333-b2958dd4-ec7b-4f5c-9b43-4441b9826b73.png">
+During our sprint review we went over the requirments that our project meets and reviewed our plan for submitting the reserch presentation. We were able to complete every task for story 3 with the exception of redirect pages for potential matches. However, our application is fully operational and is a functional matchmaking tool for players who want to be matched based on their compatibilty.  
+
+#### 11. Your product is a complete software solution—the completed stories in this sprint and all pervious sprints must be shown in the application/product and ready to show to your customer for approval/acceptance.
+10.0 pts
+
+
+
+
 ### Trello
 Public Link : https://trello.com/w/workspace57274945
 
