@@ -12,7 +12,7 @@ const server = http.createServer(app);
 //Create websocket connections
 export const io = new Server(server, {
   cors: {
-    origin: "https://hammerhead-app-adu3m.ondigitalocean.app/*"
+    origin: "*"
   }
 });
 
