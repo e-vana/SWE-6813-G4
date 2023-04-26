@@ -10,7 +10,11 @@ const port = process.env.PORT;
 const server = http.createServer(app);
 
 //Create websocket connections
-export const io = new Server(server);
+export const io = new Server(server, {
+  cors: {
+    origin: "https://hammerhead-app-adu3m.ondigitalocean.app/"
+  }
+});
 
 //Create websocket authentication middleware
 // io.use((socket, next) => {
