@@ -281,19 +281,29 @@ In this meeting John and Evan were working on the matchmaking algorithm for spri
 10.0 pts
 
 
+#### 8.You have a Continuous Integration system running. The CI system automatically builds your code every time you merge to master. The CI system executes your tests every time it builds the code. The evidence/link is included in your GitHub repo. 10.0 pts
 
-#### 8. You have a Continuous Integration system running. The CI system automatically builds your code every time you merge to master. The CI system executes your tests every time it builds the code. The evidence/link is included in your GitHub repo.
-5.0 pts
+A Continuous Integration system exists on the repository using Github Actions.  Once a pull request is initiated on the main branch and approved by a repository owner, a Github Action named [CICD](https://github.com/e-vana/SWE-6813-G4/actions/workflows/cicd.yml) gets run.  Broadly, this action creates a virtual machine using Githubs resources, installs the proper project dependencies, performs the typescript compilation and then runs the Jest test suite.
 
+![image](https://user-images.githubusercontent.com/24251508/230135411-b62cf406-c8f4-4fc9-8c68-182ae5573460.png)
 
+In the above image you can see the workflow and that the deployment portions are contingent on the "Run Unit Tests" action being successful.
 
-#### 9. You have a Continuous Deployment system running. The CD system deploys your software to a production-like environment. The CD system executes additional tests of your software in the production-like environment. The CD system deploys your software to a live production environment. Your live production environment works properly. The evidence/link is included in your GitHub repo.
-10.0 pts
+![image](https://user-images.githubusercontent.com/24251508/230135703-71cb8283-ba42-4b5c-b98c-e549d631c85e.png)
 
+In the above image you can see the steps taken in the "Run Unit Tests" action and the test results. Note, this is not reflective of all current tests, this image just shows the CI process.
 
+#### 9. You have a Continuous Deployment system running. The CD system deploys your software to a production-like environment. The CD system executes additional tests of your software in the production-like environment. The CD system deploys your software to a live production environment. Your live production environment works properly. The evidence/link is included in your GitHub repo. 10.0 pts
 
-#### 10. Your team conducts a Sprint Review. There should be an evidence to that.
-5.0 pts
+A Continuous Deployment system exists on the repository using Github Actions.  Once a pull request is initiated on the main branch and approved by a repository owner, a Github Action named [CICD](https://github.com/e-vana/SWE-6813-G4/actions/workflows/cicd.yml) gets run.  Broadly, this action creates a virtual machine using Githubs resources, installs the proper project dependencies, performs the typescript compilation and then runs the Jest test suite.  If all of the test actions pass, the continuous deployment part of the workflow is triggered.  Both the frontend and backend are deployed to separate Digital Ocean application isntances; this Github Action triggers the build process and a specific YAML configuration on Digital Ocean for both components.
+
+![image](https://user-images.githubusercontent.com/24251508/230136576-bef3ce5b-5577-410e-98c8-5b9439b8e606.png)
+
+In the above image you can see the Digital Ocean backend deployment action being dispatched after a successful test run.
+
+The frontend deployment can be accessed [here](https://hammerhead-app-adu3m.ondigitalocean.app/)
+
+#### 10. Sprint Review
 
 <img width="1440" alt="Screenshot 2023-04-23 at 9 25 02 PM" src="https://user-images.githubusercontent.com/103462168/234378333-b2958dd4-ec7b-4f5c-9b43-4441b9826b73.png">
 During our sprint review we went over the requirments that our project meets and reviewed our plan for submitting the reserch presentation. We were able to complete every task for story 3 with the exception of redirect pages for potential matches. However, our application is fully operational and is a functional matchmaking tool for players who want to be matched based on their compatibilty.  
@@ -301,7 +311,14 @@ During our sprint review we went over the requirments that our project meets and
 #### 11. Your product is a complete software solution—the completed stories in this sprint and all pervious sprints must be shown in the application/product and ready to show to your customer for approval/acceptance.
 10.0 pts
 
+You can watch a [project demo here](https://www.youtube.com/watch?v=kJR2jhpFmZ0)
 
+The frontend deployment can be accessed [here](https://hammerhead-app-adu3m.ondigitalocean.app/)
+
+### Unresolved
+The application currently doesn't redirect to a page with the generated matchmaking lobbies.  The backend code and database tables are finished but we ran out of time to complete our last sprint goal.  The table output for a lobby created looks like this:
+
+![image](https://user-images.githubusercontent.com/24251508/234672346-a4e6dd2d-49df-46e4-9362-2ac81f7bbad5.png)
 
 
 ### Trello
