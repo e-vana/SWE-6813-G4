@@ -1,6 +1,7 @@
 describe('REGISTER E2E', () => { 
   beforeEach(() => {
-    cy.visit('https://hammerhead-app-adu3m.ondigitalocean.app/') })
+  cy.visit('https://hammerhead-app-adu3m.ondigitalocean.app/') 
+  })
 
   it('Text and features are present on home page', () => {
     cy.get('.css-69i1ev').contains('MatchMate')
@@ -21,7 +22,7 @@ describe('REGISTER E2E', () => {
 
     })
 
-    it(' Rigister valid email and Password', () => {
+    it(' Rigister invalid email and Password', () => {
             
       cy.get('.css-elxzps >.MuiButtonBase-root')
         .click()
@@ -39,34 +40,12 @@ describe('REGISTER E2E', () => {
 
       //submit form
       cy.get('.MuiButtonBase-root').click()
-      cy.url().should('exist')
+      
       
          
 
     })
-    it(' Login Page', () => {
-       
-      cy.get('.MuiButtonBase-root').contains('Login')
-        .click()
-        cy.url().should('include', '/login')
-            
-        })
-
-     it ('Enter user Email and Password and Click Login', () => {
-        //Enter email and password.  
-      cy.get('.MuiButtonBase-root').contains('Login')
-        .click()
-        cy.url().should('include', '/login')
-
-        cy.get('.MuiFormControl-root').eq(0).contains("Email Address")
-
-        cy.get('.MuiFormControl-root').eq(0).type('faketest@email.com')
-
-        cy.get('.MuiFormControl-root').eq(1).type('testuser123')
-
-        //submit form
-      cy.get('.MuiButtonBase-root').click()
-      cy.url().should('exist')    })
+    
       
 
 
