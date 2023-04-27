@@ -280,6 +280,9 @@ In this meeting John and Evan were working on the matchmaking algorithm for spri
 #### 7. There is evidence that you are building your product test-first. There are at least 3 BDD / A-TDD tests in your test suite (at least 1 new one this sprint), and it passes. There are at least 30 unit tests in your test suite (at least 10 new unit tests this sprint), and they all pass.
 10.0 pts
 
+![MicrosoftTeams-image7a0bfea7bdf7f3b9e4e4d05d35c20f1738551844eb3ecdcf8eb9a3bcddb04dd3](https://user-images.githubusercontent.com/103462168/234744527-33d5eb26-c96e-48d2-b7ad-5a993c003e38.png)
+
+There's a few End to End (E2E) tests written in Cypress that check the core functionality of the web app such as navigating to the home page, registering an account and logging in.
 
 #### 8.You have a Continuous Integration system running. The CI system automatically builds your code every time you merge to master. The CI system executes your tests every time it builds the code. The evidence/link is included in your GitHub repo. 10.0 pts
 
